@@ -1,0 +1,36 @@
+<form (ngSubmit)="onSubmit()" #vacancyForm="ngForm">
+  
+  <div>
+    <label for="position">Position:</label>
+    <input
+      id="position"
+      name="position"
+      type="number"
+      [(ngModel)]="position"
+      required
+      #positionInput="ngModel"
+    />
+    <div *ngIf="positionInput.invalid && (positionInput.dirty || positionInput.touched)">
+      <div *ngIf="positionInput.errors?.['required']">Position is required.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="status">Status:</label>
+    <select
+      id="status"
+      name="status"
+      [(ngModel)]="status"
+      required
+      #statusSelect="ngModel"
+    >
+      <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+    </select>
+    <div *ngIf="statusSelect.invalid && (statusSelect.dirty || statusSelect.touched)">
+      <div *ngIf="statusSelect.errors?.['required']">Status is required.</div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="vacancyForm.invalid">Criar vaga</button>
+
+</form>
