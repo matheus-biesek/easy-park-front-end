@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateVacancyComponent } from './component/vacancy/create-vacancy/create-vacancy.component';
@@ -11,6 +11,8 @@ import { DeleteVacancyComponent } from './component/vacancy/delete-vacancy/delet
 import { LoginComponent } from './component/login/login.component';
 import { RoleClientComponent } from './component/register-user/role-client/role-client.component';
 import { RoleAdmComponent } from './component/register-user/role-adm/role-adm.component';
+import { authInterceptorFn } from './interceptors/auth.service';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,11 @@ import { RoleAdmComponent } from './component/register-user/role-adm/role-adm.co
     AppRoutingModule
   ],
   providers: [
-    provideHttpClient(withFetch(), withInterceptorsFromDi())
+    AuthGuard,
+    provideHttpClient(
+      withFetch(), // Habilita fetch
+      withInterceptors([authInterceptorFn]) // Aplica o interceptor
+    )
   ],
   bootstrap: [AppComponent]
 })

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-role-client',
   templateUrl: './role-client.component.html',
-  styleUrls: ['./role-client.component.css'] // Corrija aqui para styleUrls
+  styleUrls: ['./role-client.component.css']
 })
 export class RoleClientComponent {
   registerForm: FormGroup;
@@ -19,11 +19,11 @@ export class RoleClientComponent {
     private router: Router
   ) {
     this.registerForm = this.fb.group({
-      userName: ['', [Validators.required]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
     }, {
-      validator: this.passwordMatchValidator // Validador customizado
+      validators: this.passwordMatchValidator // Referência correta ao validador
     });
   }
 
@@ -38,7 +38,9 @@ export class RoleClientComponent {
   }
 
   onSubmit(): void {
+    console.log('Submit button clicked');
     if (this.registerForm.invalid) {
+      console.log('Form is invalid');
       return;
     }
 
@@ -47,10 +49,11 @@ export class RoleClientComponent {
 
     this.registerService.registerUserClient(this.registerForm.value).subscribe({
       next: (response) => {
-        // Suponha que o redirecionamento seja para uma página de login
-        this.router.navigate(['/login']);
+        localStorage.setItem('authToken', response.token);
+        this.router.navigate(['/status-vacancies']);
       },
       error: (error) => {
+        console.error('Error occurred:', error);
         this.errorMessage = 'Registro falhou. Verifique os dados e tente novamente.';
       },
       complete: () => {
@@ -59,3 +62,4 @@ export class RoleClientComponent {
     });
   }
 }
+

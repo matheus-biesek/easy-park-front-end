@@ -11,7 +11,7 @@ export class LoginService {
 
   private apiUrl = 'http://localhost:8080/auth/login'; 
 
-  login(user: { userName: string, password: string }): Observable<any> {
-    return this.http.post<any>(this.apiUrl, user);
+  login(credentials: { username: string; password: string }): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(this.apiUrl, credentials);
   }
 }

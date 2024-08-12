@@ -7,8 +7,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']  // Corrigido de 'styleUrl' para 'styleUrls'
 })
+
 
 export class LoginComponent {
   loginForm: FormGroup;
@@ -17,7 +18,7 @@ export class LoginComponent {
 
   constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {
     this.loginForm = this.fb.group({
-      userName: ['', [Validators.required]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
@@ -32,9 +33,12 @@ export class LoginComponent {
 
     this.loginService.login(this.loginForm.value).subscribe({
       next: (response) => {
-        // Suponha que a resposta contenha um token e redirecione para a página principal
-        localStorage.setItem('authToken', response.token); // Ajuste conforme a resposta da API
-        this.router.navigate(['/']); // Redireciona para a página principal ou outra página
+        if (response && response.token) {
+          localStorage.setItem('authToken', response.token);
+          this.router.navigate(['/status-vacancies']); 
+        } else {
+          this.errorMessage = 'Resposta inválida do servidor.';
+        }
       },
       error: (error) => {
         this.errorMessage = 'Login falhou. Verifique suas credenciais.';

@@ -2,9 +2,9 @@
     <h2>Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="userName">Nome de Usuário:</label>
-        <input id="userName" formControlName="userName" type="text" />
-        <div *ngIf="loginForm.controls['userName'].invalid && loginForm.controls['userName'].touched">
+        <label for="username">Nome de Usuário:</label>
+        <input id="username" formControlName="username" type="text" />
+        <div *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched">
           Nome de usuário é obrigatório.
         </div>
       </div>
