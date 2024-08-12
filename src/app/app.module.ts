@@ -13,6 +13,8 @@ import { RoleClientComponent } from './component/register-user/role-client/role-
 import { RoleAdmComponent } from './component/register-user/role-adm/role-adm.component';
 import { authInterceptorFn } from './interceptors/auth.service';
 import { AuthGuard } from './auth.guard';
+import { TopComponent } from './component/navbar/nav-top/top.component';
+import { NavFooterComponent } from './component/navbar/nav-footer/nav-footer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { AuthGuard } from './auth.guard';
     DeleteVacancyComponent,
     LoginComponent,
     RoleClientComponent,
-    RoleAdmComponent
+    RoleAdmComponent,
+    TopComponent,
+    NavFooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,64 @@
+/* Centraliza o contêiner de status na página */
+.status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ocupa toda a altura da tela */
+    padding: 1rem;
+  }
+  
+  /* Estiliza o contêiner que envolve o conteúdo da lista */
+  .status-wrapper {
+    max-width: 600px; /* Define a largura máxima do contêiner para o conteúdo */
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd; /* Borda leve para o contorno */
+    border-radius: 8px; /* Cantos arredondados */
+    background-color: #fff; /* Fundo branco */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  }
+  
+  /* Estiliza o título do contêiner */
+  .status-wrapper h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem; /* Ajusta o tamanho da fonte do título */
+  }
+  
+  /* Estiliza a lista de vagas */
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Estiliza os itens da lista */
+  li {
+    padding: 12px 15px; /* Ajusta o padding dos itens para maior proporcionalidade */
+    margin-bottom: 8px; /* Espaçamento entre os itens */
+    border-radius: 4px;
+    color: #fff;
+    width: 100%; /* Garante que o item ocupe toda a largura disponível */
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+  }
+  
+  /* Estilos para diferentes status */
+  .status-reserved {
+    background-color: yellow;
+    color: black;
+  }
+  
+  .status-available {
+    background-color: rgb(43, 255, 0);
+    color: black;
+  }
+  
+  .status-busy {
+    background-color: rgb(255, 0, 0);
+    color: black;
+  }
+  
+  .status-unknown {
+    background-color: rgb(208, 0, 255);
+  }
+  

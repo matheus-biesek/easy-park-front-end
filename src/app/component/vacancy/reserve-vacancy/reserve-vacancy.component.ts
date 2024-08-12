@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ReserveVacancyService } from '../../../service/vacancy/reserve-vacancy/reserve-vacancy.service'; 
-import { EnumStatusVacancy } from '../../../interface/vacancy.model';
 
 @Component({
   selector: 'app-reserve-vacancy',
@@ -10,8 +9,8 @@ import { EnumStatusVacancy } from '../../../interface/vacancy.model';
 export class ReserveVacancyComponent {
 
   position: number = 0;
-  status: EnumStatusVacancy = EnumStatusVacancy.Available;
-  statusOptions = Object.values(EnumStatusVacancy);
+  // Status fixo como 'Reserved'
+  readonly status: string = 'reserved';
 
   constructor(private reserveVacancyService: ReserveVacancyService) {}
 
@@ -20,8 +19,7 @@ export class ReserveVacancyComponent {
     this.reserveVacancyService.changeStatusVacancy([vacancy]).subscribe({
       next: (response: string) => {
         window.alert(response);
-        this.position = 0;
-        this.status = EnumStatusVacancy.Available;
+        this.position = 0; // Limpa o campo de posição após o sucesso
       },
       error: (error: any) => {
         console.error('Error reserving vacancy:', error);

@@ -1,10 +1,15 @@
-<div *ngIf="vacancies.length > 0; else noVacancies">
-    <ul>
-      <li *ngFor="let vacancy of vacancies">
-        ID: {{ vacancy.id }} | Position: {{ vacancy.position }} | Status: {{ vacancy.status }}
-      </li>
-    </ul>
+<div class="status-container">
+  <div class="status-wrapper">
+    <h2>Status das Vagas</h2>
+    <div *ngIf="vacancies.length > 0; else noVacancies">
+      <ul>
+        <li *ngFor="let vacancy of vacancies" [ngClass]="getStatusClass(vacancy.status)">
+          Position: {{ vacancy.position }} | Status: {{ translateStatus(vacancy.status) }}
+        </li>
+      </ul>
+    </div>
+    <ng-template #noVacancies>
+      <p>No vacancies available.</p>
+    </ng-template>
+  </div>
 </div>
-<ng-template #noVacancies>
-<p>No vacancies available.</p>
-</ng-template>
