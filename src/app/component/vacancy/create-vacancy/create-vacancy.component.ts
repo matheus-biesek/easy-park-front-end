@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CreateVacancyService } from '../../../service/vacancy/create-vacancy.service';
+import { CreateVacancyService } from '../../../service/vacancy/create-vacancy/create-vacancy.service';
 
 @Component({
   selector: 'app-vacancy-form',
@@ -8,12 +8,13 @@ import { CreateVacancyService } from '../../../service/vacancy/create-vacancy.se
 })
 
 export class CreateVacancyComponent {
+
+  constructor(private CreateVacancyService: CreateVacancyService) { }
+
   position: number = 0;
   status: string = '';
 
   statuses = ['available', 'busy', 'reserved'];
-
-  constructor(private CreateVacancyService: CreateVacancyService) { }
 
   onSubmit(): void {
     if (this.position && this.status) {

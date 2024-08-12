@@ -1,0 +1,25 @@
+<form (ngSubmit)="reserveVacancy()">
+    <div>
+      <label for="position">Position:</label>
+      <input
+        id="position"
+        type="number"
+        [(ngModel)]="position"
+        name="position"
+        required
+      />
+    </div>
+    <div>
+      <label for="status">Status:</label>
+      <select
+        id="status"
+        [(ngModel)]="status"
+        name="status"
+        required
+      >
+        <option *ngFor="let option of statusOptions" [value]="option">{{option}}</option>
+      </select>
+    </div>
+    <button type="submit">Reserve Vacancy</button>
+  </form>
+  

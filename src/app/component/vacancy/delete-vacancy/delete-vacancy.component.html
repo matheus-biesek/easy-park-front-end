@@ -1,0 +1,19 @@
+<div class="delete-vacancy-container">
+    <h2>Delete Vacancy</h2>
+  
+    <div class="form-group">
+      <label for="position">Position:</label>
+      <input type="number" id="position" [(ngModel)]="position" placeholder="Enter position" />
+    </div>
+  
+    <button (click)="deleteVacancy()" class="btn btn-danger">Delete Vacancy</button>
+  
+    <div *ngIf="message" class="alert alert-success mt-3">
+      {{ message }}
+    </div>
+  
+    <div *ngIf="error" class="alert alert-danger mt-3">
+      {{ error }}
+    </div>
+</div>
+  

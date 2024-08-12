@@ -1,4 +1,5 @@
 export interface Vacancy {
+    id: number;
     position: number;
     status: EnumStatusVacancy;
 }
