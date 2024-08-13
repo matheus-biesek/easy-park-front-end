@@ -1,0 +1,50 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    container_name: con-data-base
+    environment:
+      POSTGRES_USER: usuario_banco_de_dados
+      POSTGRES_PASSWORD: senha_banco_de_dados
+      POSTGRES_DB: meu_banco_de_dados
+    networks:
+      - net-inventory
+    volumes:
+      - /tmp/volume:/var/lib/postgresql/data
+
+  spring-boot:
+    image: easy-park-back:1.0
+    container_name: con-spring-boot
+    ports:
+     - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://con-data-base:5432/meu_banco_de_dados
+      SPRING_DATASOURCE_USERNAME: usuario_banco_de_dados
+      SPRING_DATASOURCE_PASSWORD: senha_banco_de_dados
+      API_SECURITY_TOKEN_SECRET: my-secret-key
+    depends_on:
+      - postgres
+    networks:
+      - net-inventory
+
+  angular-frontend:
+    image: easy-park-front
+    container_name: con-angular-frontend
+    networks:
+      - net-inventory
+
+  nginx:
+    image: nginx:alpine
+    container_name: con-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - angular-frontend
+    networks:
+      - net-inventory
+
+networks:
+  net-inventory:
+    driver: bridge
