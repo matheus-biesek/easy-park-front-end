@@ -11,7 +11,7 @@ import { DeleteVacancyComponent } from './component/vacancy/delete-vacancy/delet
 import { LoginComponent } from './component/login/login.component';
 import { RoleClientComponent } from './component/register-user/role-client/role-client.component';
 import { RoleAdmComponent } from './component/register-user/role-adm/role-adm.component';
-import { authInterceptorFn } from './interceptors/auth.service';
+import { authInterceptorFn } from './service/interceptors/authInterceptor.service'; 
 import { AuthGuard } from './auth.guard';
 import { TopComponent } from './component/navbar/nav-top/top.component';
 import { NavFooterComponent } from './component/navbar/nav-footer/nav-footer.component';
