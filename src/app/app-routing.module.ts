@@ -8,6 +8,7 @@ import { DeleteVacancyComponent } from './component/vacancy/delete-vacancy/delet
 import { RoleClientComponent } from './component/register-user/role-client/role-client.component';
 import { RoleAdmComponent } from './component/register-user/role-adm/role-adm.component';
 import { AuthGuard } from './auth.guard';
+import { UpdateRoleComponent } from './component/update/role/update-role.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'delete-vacancy', component: DeleteVacancyComponent, canActivate: [AuthGuard] },
   { path: 'register-client', component: RoleClientComponent },
   { path: 'register-admin', component: RoleAdmComponent, canActivate: [AuthGuard] },
+  { path: 'update-role', component: UpdateRoleComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' }
 ];
 

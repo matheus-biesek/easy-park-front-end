@@ -15,6 +15,8 @@ import { authInterceptorFn } from './service/interceptors/authInterceptor.servic
 import { AuthGuard } from './auth.guard';
 import { TopComponent } from './component/navbar/nav-top/top.component';
 import { NavFooterComponent } from './component/navbar/nav-footer/nav-footer.component';
+import { UpdateRoleComponent } from './component/update/role/update-role.component';
+import { NavTopComponent } from './component/navbar/client/nav-top/nav-top.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { NavFooterComponent } from './component/navbar/nav-footer/nav-footer.com
     RoleClientComponent,
     RoleAdmComponent,
     TopComponent,
-    NavFooterComponent
+    NavFooterComponent,
+    UpdateRoleComponent,
+    NavTopComponent
   ],
   imports: [
     BrowserModule,
