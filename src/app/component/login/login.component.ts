@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../service/login/login.service';
+import { AuthService } from '../../service/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,8 +18,9 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private router: Router,
-    ) {
+    private authService: AuthService, // Injeção do AuthService
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -26,7 +28,6 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-
     if (this.loginForm.invalid) {
       return;
     }
@@ -36,8 +37,7 @@ export class LoginComponent {
     this.loginService.login(this.loginForm.value).subscribe({
       next: (response) => {
         if (response && response.token) {
-          localStorage.removeItem('authToken');
-          localStorage.setItem('authToken', response.token);
+          this.authService.login(response.token); // Atualizar o AuthService com o novo token
           this.router.navigate(['/status-vacancies']); 
         } else {
           this.errorMessage = 'Resposta inválida do servidor.';

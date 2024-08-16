@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../service/auth/auth.service'; 
 
 @Component({
   selector: 'app-nav-top',
@@ -9,11 +10,12 @@ import { Router } from '@angular/router';
 export class NavTopComponent {
 
   constructor(
+    private authService: AuthService,
     private router: Router
   ) {}
 
   logout(): void {
-    localStorage.removeItem('authToken');
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 }

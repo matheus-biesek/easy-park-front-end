@@ -1,3 +1,5 @@
-<app-top></app-top>
+<app-nav-login *ngIf="!isAuthenticated"></app-nav-login>
+<app-top *ngIf="isAuthenticated && userRole === 'ADMIN'"></app-top>
+<app-nav-top *ngIf="isAuthenticated && userRole === 'USER'"></app-nav-top>
 <router-outlet></router-outlet>
 <app-nav-footer></app-nav-footer>

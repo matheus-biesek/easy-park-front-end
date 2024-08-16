@@ -17,6 +17,7 @@ import { TopComponent } from './component/navbar/nav-top/top.component';
 import { NavFooterComponent } from './component/navbar/nav-footer/nav-footer.component';
 import { UpdateRoleComponent } from './component/update/role/update-role.component';
 import { NavTopComponent } from './component/navbar/client/nav-top/nav-top.component';
+import { NavLoginComponent } from './component/navbar/nav-login/nav-login.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NavTopComponent } from './component/navbar/client/nav-top/nav-top.compo
     TopComponent,
     NavFooterComponent,
     UpdateRoleComponent,
-    NavTopComponent
+    NavTopComponent,
+    NavLoginComponent
   ],
   imports: [
     BrowserModule,
