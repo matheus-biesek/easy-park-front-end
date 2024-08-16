@@ -9,16 +9,17 @@ import { RoleClientComponent } from './component/register-user/role-client/role-
 import { RoleAdmComponent } from './component/register-user/role-adm/role-adm.component';
 import { AuthGuard } from './auth.guard';
 import { UpdateRoleComponent } from './component/update/role/update-role.component';
+import { RoleGuard } from './role.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'create-vacancy', component: CreateVacancyComponent, canActivate: [AuthGuard] },
-  { path: 'status-vacancies', component: StatusVacanciesComponent, canActivate: [AuthGuard] },
-  { path: 'reserve-vacancy', component: ReserveVacancyComponent, canActivate: [AuthGuard] },
-  { path: 'delete-vacancy', component: DeleteVacancyComponent, canActivate: [AuthGuard] },
+  { path: 'create-vacancy', component: CreateVacancyComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
+  { path: 'status-vacancies', component: StatusVacanciesComponent, canActivate: [AuthGuard] }, // USER E ADMIN
+  { path: 'reserve-vacancy', component: ReserveVacancyComponent, canActivate: [AuthGuard] }, // USER E ADMIN
+  { path: 'delete-vacancy', component: DeleteVacancyComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'register-client', component: RoleClientComponent },
-  { path: 'register-admin', component: RoleAdmComponent, canActivate: [AuthGuard] },
-  { path: 'update-role', component: UpdateRoleComponent, canActivate: [AuthGuard] },
+  { path: 'register-admin', component: RoleAdmComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
+  { path: 'update-role', component: UpdateRoleComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: '**', redirectTo: 'login' }
 ];
 
