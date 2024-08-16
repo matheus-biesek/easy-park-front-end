@@ -9,9 +9,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AuthGuard implements CanActivate {
 
-  private apiUrl = 'http://localhost:8080/auth/token-is-valid';
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
-  constructor(private http: HttpClient, private router: Router) {}
+  private apiUrl = 'http://localhost:8080/auth/token-is-valid';
 
   canActivate(): Observable<boolean> {
     if (typeof window === 'undefined') {
