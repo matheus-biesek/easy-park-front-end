@@ -26,14 +26,6 @@ services:
     networks:
       - net-easy-park
 
-  angular:
-    image: easy-park-front:1.0
-    container_name: con-angular
-    depends_on:
-      - nginx
-    networks:
-      - net-easy-park
-
   nginx:
     image: nginx:alpine
     container_name: con-nginx
@@ -41,6 +33,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./dist/easy-park-solutions-front/browser:/usr/share/nginx/html
     networks:
       - net-easy-park
 
