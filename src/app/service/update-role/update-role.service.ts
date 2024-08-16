@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UpdateRoleService {
-  private apiUrl = 'http://localhost:8080/user/update-role';
+  private apiUrl = 'http://localhost:8080/auth/update-role';
 
   constructor(
     private http: HttpClient,
