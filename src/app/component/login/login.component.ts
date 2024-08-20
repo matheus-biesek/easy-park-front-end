@@ -37,7 +37,7 @@ export class LoginComponent {
     this.loginService.login(this.loginForm.value).subscribe({
       next: (response) => {
         if (response && response.token) {
-          this.authService.login(response.token); // Atualizar o AuthService com o novo token
+          this.authService.login(response.token);
           this.router.navigate(['/status-vacancies']); 
         } else {
           this.errorMessage = 'Resposta inválida do servidor.';
