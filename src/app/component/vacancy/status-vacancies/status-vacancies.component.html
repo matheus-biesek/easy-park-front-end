@@ -4,12 +4,12 @@
     <div *ngIf="vacancies.length > 0; else noVacancies">
       <ul>
         <li *ngFor="let vacancy of vacancies" [ngClass]="getStatusClass(vacancy.status)">
-          Position: {{ vacancy.position }} | Status: {{ translateStatus(vacancy.status) }}
+          Posição: {{ vacancy.position }} | Status: {{ translateStatus(vacancy.status) }}
         </li>
       </ul>
     </div>
     <ng-template #noVacancies>
-      <p>No vacancies available.</p>
+      <p>Não há vagas!</p>
     </ng-template>
   </div>
 </div>

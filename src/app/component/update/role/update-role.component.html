@@ -1,12 +1,12 @@
 <!-- update-role.component.html -->
 <div class="update-container">
-    <h2>Update User Role</h2>
+    <h2>Atualizar role do usuário.</h2>
     <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="username">Username:</label>
+        <label for="username">Nome do usuário:</label>
         <input id="username" formControlName="username" type="text">
         <div *ngIf="updateForm.get('username')?.invalid && (updateForm.get('username')?.dirty || updateForm.get('username')?.touched)">
-          <small class="error-message" *ngIf="updateForm.get('username')?.errors?.['required']">Username is required.</small>
+          <small class="error-message" *ngIf="updateForm.get('username')?.errors?.['required']">É necessario digitar o nome de usuário!</small>
         </div>
       </div>
   
@@ -17,11 +17,11 @@
           <option value="ADMIN">Admin</option>
         </select>
         <div *ngIf="updateForm.get('role')?.invalid && (updateForm.get('role')?.dirty || updateForm.get('role')?.touched)">
-          <small class="error-message" *ngIf="updateForm.get('role')?.errors?.['required']">Role is required.</small>
+          <small class="error-message" *ngIf="updateForm.get('role')?.errors?.['required']">É necessario a role do usuário.</small>
         </div>
       </div>
   
-      <button type="submit">Atualizar roledo usuário.</button>
+      <button type="submit">Atualizar role do usuário.</button>
   
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}

@@ -1,10 +1,10 @@
 <div class="create-container">
   <div class="create-wrapper">
-    <h2>Create Vacancy</h2>
+    <h2>Criar vaga.</h2>
     <form (ngSubmit)="onSubmit()" #vacancyForm="ngForm">
       
       <div class="form-group">
-        <label for="position">Position:</label>
+        <label for="position">Posição da vaga:</label>
         <input
           id="position"
           name="position"
@@ -14,7 +14,7 @@
           #positionInput="ngModel"
         />
         <div *ngIf="positionInput.invalid && (positionInput.dirty || positionInput.touched)" class="error-message">
-          <div *ngIf="positionInput.errors?.['required']">Position is required.</div>
+          <div *ngIf="positionInput.errors?.['required']">É necessario digital a posição!</div>
         </div>
       </div>
   
@@ -30,7 +30,7 @@
           <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
         </select>
         <div *ngIf="statusSelect.invalid && (statusSelect.dirty || statusSelect.touched)" class="error-message">
-          <div *ngIf="statusSelect.errors?.['required']">Status is required.</div>
+          <div *ngIf="statusSelect.errors?.['required']">É necessario digital o status da vaga!</div>
         </div>
       </div>
   
