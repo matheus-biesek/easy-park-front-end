@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RegisterUserClientService } from '../../../service/register-user/role-client/register-user-client.service';
 import { Router } from '@angular/router';
+import { RegisterUserAdmService } from '../../../service/register-user/role-adm/register-user-adm.service';
 
 @Component({
   selector: 'app-role-adm',
@@ -10,12 +10,11 @@ import { Router } from '@angular/router';
 })
 export class RoleAdmComponent {
   registerForm: FormGroup;
-  isSubmitting = false;
   errorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
-    private registerService: RegisterUserClientService,
+    private registerService: RegisterUserAdmService,
     private router: Router
   ) {
     this.registerForm = this.fb.group({
@@ -43,20 +42,16 @@ export class RoleAdmComponent {
       return;
     }
 
-    this.isSubmitting = true;
     this.errorMessage = null;
-
-    this.registerService.registerUserClient(this.registerForm.value).subscribe({
+    
+    //Criar o serviço para fazer a requisição que o ADM faz para criar usuários
+    this.registerService.registerUserAdmin(this.registerForm.value).subscribe({
       next: (response) => {
-        localStorage.setItem('authToken', response.token);
-        this.router.navigate(['/status-vacancies']);
+        alert("Usuário criado com sucesso!\nFaça logout para acessar a nova conta.");
       },
       error: (error) => {
         this.errorMessage = 'Registration failed. Please try again.';
       },
-      complete: () => {
-        this.isSubmitting = false;
-      }
     });
   }
 }

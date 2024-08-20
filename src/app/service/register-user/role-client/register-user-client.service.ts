@@ -9,7 +9,9 @@ export class RegisterUserClientService {
 
   private apiUrl = 'http://localhost:8080/auth/register-client'; 
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) {}
 
   registerUserClient(user: { username: string, password: string }): Observable<any> {
     return this.http.post<any>(this.apiUrl, user);

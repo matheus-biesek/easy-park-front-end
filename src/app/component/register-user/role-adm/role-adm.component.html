@@ -32,15 +32,15 @@
       <div class="form-group">
         <label for="role">Role:</label>
         <select id="role" formControlName="role">
-          <option value="client">Client</option>
-          <option value="admin">Admin</option>
+          <option value="USER">User</option>
+          <option value="ADMIN">Admin</option>
         </select>
         <div *ngIf="registerForm.get('role')?.invalid && (registerForm.get('role')?.dirty || registerForm.get('role')?.touched)">
           <small class="error-message" *ngIf="registerForm.get('role')?.errors?.['required']">Role is required.</small>
         </div>
       </div>
   
-      <button type="submit" [disabled]="isSubmitting">Register</button>
+      <button type="submit" >Registrar</button>
   
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
