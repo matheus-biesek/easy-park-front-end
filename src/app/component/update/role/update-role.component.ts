@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UpdateRoleService } from '../../../service/update-role/update-role.service'; // Ajuste o caminho conforme necessário
+import { UpdateRoleService } from '../../../service/update-role/update-role.service'; 
 
 @Component({
   selector: 'app-role-update',
   templateUrl: './update-role.component.html',
-  styleUrls: ['./update-role.component.css'] // Corrigido para 'styleUrls'
+  styleUrls: ['./update-role.component.css']
 })
 export class UpdateRoleComponent implements OnInit {
   updateForm: FormGroup;
-  isSubmitting = false;
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
@@ -25,30 +24,25 @@ export class UpdateRoleComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    // Initialize if needed
-  }
+  ngOnInit(): void {}
 
   onSubmit(): void {
     if (this.updateForm.invalid) {
       return;
     }
 
-    this.isSubmitting = true;
     this.errorMessage = null;
     this.successMessage = null;
 
     this.updateRoleService.updateRole(this.updateForm.value).subscribe({
       next: () => {
-        this.successMessage = 'Role updated successfully.';
-        setTimeout(() => this.router.navigate(['/dashboard']), 2000); // Redireciona após 2 segundos
+        this.successMessage = 'Role do usuário atualizada com sucesso!';
       },
       error: (error) => {
-        this.errorMessage = 'Failed to update role. Please try again.';
+        this.errorMessage = 'Falha ao atualizar a role do usuário!';
+        console.error('Error:', error); // Adicione mais detalhes para depuração
       },
-      complete: () => {
-        this.isSubmitting = false;
-      }
     });
+    
   }
 }

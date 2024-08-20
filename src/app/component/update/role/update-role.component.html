@@ -1,3 +1,4 @@
+<!-- update-role.component.html -->
 <div class="update-container">
     <h2>Update User Role</h2>
     <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
@@ -12,15 +13,15 @@
       <div class="form-group">
         <label for="role">Role:</label>
         <select id="role" formControlName="role">
-          <option value="client">Client</option>
-          <option value="admin">Admin</option>
+          <option value="USER">User</option>
+          <option value="ADMIN">Admin</option>
         </select>
         <div *ngIf="updateForm.get('role')?.invalid && (updateForm.get('role')?.dirty || updateForm.get('role')?.touched)">
           <small class="error-message" *ngIf="updateForm.get('role')?.errors?.['required']">Role is required.</small>
         </div>
       </div>
   
-      <button type="submit" [disabled]="isSubmitting">Update Role</button>
+      <button type="submit">Atualizar roledo usuário.</button>
   
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}

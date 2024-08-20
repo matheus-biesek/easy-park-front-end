@@ -10,7 +10,7 @@ export class UpdateRoleService {
 
   constructor(
     private http: HttpClient,
-  ) { }
+  ) {}
 
   updateRole(userData: { username: string, role: string }): Observable<void> {
     return this.http.put<void>(this.apiUrl, userData);
