@@ -23,7 +23,6 @@ export class AuthService {
 
     try {
       const payload = this.parseJwt(token);
-      console.log('Payload decodificado:', payload);
 
       switch (payload.role) {
         case 0:
@@ -62,4 +61,3 @@ export class AuthService {
     return JSON.parse(jsonPayload);
   }
 }
-
