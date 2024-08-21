@@ -10,6 +10,7 @@ import { RoleAdmComponent } from './component/register-user/role-adm/role-adm.co
 import { AuthGuard } from './auth.guard';
 import { UpdateRoleComponent } from './component/update/role/update-role.component';
 import { RoleGuard } from './role.guard';
+import { DeleteUserComponent } from './component/delete-user/delete-user.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'register-client', component: RoleClientComponent },
   { path: 'register-admin', component: RoleAdmComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'update-role', component: UpdateRoleComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
+  { path: 'delete-user', component: DeleteUserComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: '**', redirectTo: 'login' }
 ];
 
