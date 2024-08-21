@@ -1,0 +1,22 @@
+<div class="update-container">
+    <h2>Deletar usuário</h2>
+    <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Nome do usuário:</label>
+        <input id="username" formControlName="username" type="text">
+        <div *ngIf="deleteForm.get('username')?.invalid && (deleteForm.get('username')?.dirty || deleteForm.get('username')?.touched)">
+          <small class="error-message" *ngIf="deleteForm.get('username')?.errors?.['required']">É necessário digitar o nome de usuário!</small>
+        </div>
+      </div>
+  
+      <button type="submit">Deletar usuário</button>
+  
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="successMessage" class="success-message">
+        {{ successMessage }}
+      </div>
+    </form>
+  </div>
+  
