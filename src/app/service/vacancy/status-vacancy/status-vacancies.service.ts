@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class StatusVacanciesService {
 
-  private apiUrl = 'http://localhost:8080/api-vacancy/status-all-vacancy';
+  private apiUrl = 'http://18.117.250.60:8080/api-vacancy/status-all-vacancy';
 
   constructor(private http: HttpClient) { }
 

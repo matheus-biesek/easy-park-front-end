@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     private router: Router
   ) {}
 
-  private apiUrl = 'http://localhost:8080/auth/token-is-valid';
+  private apiUrl = 'http://18.117.250.60:8080/auth/token-is-valid';
 
   canActivate(): Observable<boolean> {
     if (typeof window === 'undefined') {
