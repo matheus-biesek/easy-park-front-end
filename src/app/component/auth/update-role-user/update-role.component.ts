@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UpdateRoleUserService } from '../../../service/auth/update-role-user.service'; 
+import { UpdateRoleUserService } from '../../../service/auth/update-role-user.service';
 
 @Component({
   selector: 'app-role-update',

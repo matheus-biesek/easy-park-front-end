@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../service/auth/auth.service';
 
 @Component({
-  selector: 'app-top',
-  templateUrl: './top.component.html',
-  styleUrl: './top.component.css'
+  selector: 'app-nav-adm',
+  templateUrl: './nav-adm.component.html',
+  styleUrl: './nav-adm.component.css'
 })
 export class TopComponent {
 

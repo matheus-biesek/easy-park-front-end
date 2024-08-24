@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RoleClientComponent } from './role-client.component';
+import { NavTopComponent } from './nav-user.component';
 
-describe('RoleClientComponent', () => {
-  let component: RoleClientComponent;
-  let fixture: ComponentFixture<RoleClientComponent>;
+describe('NavTopComponent', () => {
+  let component: NavTopComponent;
+  let fixture: ComponentFixture<NavTopComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RoleClientComponent]
+      declarations: [NavTopComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RoleClientComponent);
+    fixture = TestBed.createComponent(NavTopComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

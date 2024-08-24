@@ -8,17 +8,17 @@ import { CreateVacancyComponent } from './component/vacancy/create-vacancy/creat
 import { StatusVacanciesComponent } from './component/vacancy/status-vacancies/status-vacancies.component';
 import { ReserveVacancyComponent } from './component/vacancy/reserve-vacancy/reserve-vacancy.component';
 import { DeleteVacancyComponent } from './component/vacancy/delete-vacancy/delete-vacancy.component';
-import { LoginComponent } from './component/login/login.component';
-import { RoleClientComponent } from './component/register-user/role-client/role-client.component';
-import { RoleAdmComponent } from './component/register-user/role-adm/role-adm.component';
+import { LoginComponent } from './component/auth/login/login.component'; 
+import { RoleUserComponent } from './component/auth/register-user/role-user/role-user.component'; 
+import { RoleAdmComponent } from './component/auth/register-user/role-adm/role-adm.component'; 
 import { authInterceptorFn } from './service/interceptors/authInterceptor.service'; 
 import { AuthGuard } from './auth.guard';
-import { TopComponent } from './component/navbar/nav-top/top.component';
-import { NavFooterComponent } from './component/navbar/nav-footer/nav-footer.component';
-import { UpdateRoleComponent } from './component/update/role/update-role.component';
-import { NavTopComponent } from './component/navbar/client/nav-top/nav-top.component';
+import { TopComponent } from './component/navbar/nav-adm/nav-adm.component'; 
+import { NavFooterComponent } from './component/footer/nav-footer.component';
+import { UpdateRoleComponent } from './component/auth/update-role-user/update-role.component'; 
+import { NavUserComponent } from './component/navbar/nav-user/nav-user.component'; 
 import { NavLoginComponent } from './component/navbar/nav-login/nav-login.component';
-import { DeleteUserComponent } from './component/delete-user/delete-user.component';
+import { DeleteUserComponent } from './component/auth/delete-user/delete-user.component'; 
 
 @NgModule({
   declarations: [
@@ -28,12 +28,12 @@ import { DeleteUserComponent } from './component/delete-user/delete-user.compone
     ReserveVacancyComponent,
     DeleteVacancyComponent,
     LoginComponent,
-    RoleClientComponent,
+    RoleUserComponent,
     RoleAdmComponent,
     TopComponent,
     NavFooterComponent,
     UpdateRoleComponent,
-    NavTopComponent,
+    NavUserComponent,
     NavLoginComponent,
     DeleteUserComponent
   ],

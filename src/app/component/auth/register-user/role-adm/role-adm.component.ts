@@ -1,29 +1,29 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RegisterUserUserService } from '../../../service/auth/register-user-user.service';
 import { Router } from '@angular/router';
+import { RegisterUserAdmService } from '../../../../service/auth/register-user-adm.service';
 
 @Component({
-  selector: 'app-role-client',
-  templateUrl: './role-client.component.html',
-  styleUrls: ['./role-client.component.css']
+  selector: 'app-role-adm',
+  templateUrl: './role-adm.component.html',
+  styleUrls: ['./role-adm.component.css']
 })
-export class RoleClientComponent {
+export class RoleAdmComponent {
   registerForm: FormGroup;
-  isSubmitting = false;
   errorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
-    private registerUserUserService: RegisterUserUserService,
+    private registerService: RegisterUserAdmService,
     private router: Router
   ) {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required]]
+      confirmPassword: ['', [Validators.required]],
+      role: ['', [Validators.required]] // Novo campo para o papel do usuário
     }, {
-      validators: this.passwordMatchValidator // Referência correta ao validador
+      validators: this.passwordMatchValidator
     });
   }
 
@@ -38,28 +38,20 @@ export class RoleClientComponent {
   }
 
   onSubmit(): void {
-    console.log('Submit button clicked');
     if (this.registerForm.invalid) {
-      console.log('Form is invalid');
       return;
     }
 
-    this.isSubmitting = true;
     this.errorMessage = null;
-
-    this.registerUserUserService.registerUserClient(this.registerForm.value).subscribe({
+    
+    //Criar o serviço para fazer a requisição que o ADM faz para criar usuários
+    this.registerService.registerUserAdmin(this.registerForm.value).subscribe({
       next: (response) => {
-        localStorage.setItem('authToken', response.token);
-        this.router.navigate(['/status-vacancies']);
+        alert("Usuário criado com sucesso!\nFaça logout para acessar a nova conta.");
       },
       error: (error) => {
-        console.error('Error occurred:', error);
-        this.errorMessage = 'Registro falhou. Verifique os dados e tente novamente.';
+        this.errorMessage = 'Registration failed. Please try again.';
       },
-      complete: () => {
-        this.isSubmitting = false;
-      }
     });
   }
 }
-
