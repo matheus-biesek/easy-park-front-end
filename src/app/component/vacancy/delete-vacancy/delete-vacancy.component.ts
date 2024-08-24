@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DeleteVacancyService } from '../../../service/vacancy/delete-vacancy/delete-vacancy.service'; 
+import { DeleteVacancyService } from '../../../service/vacancy/delete-vacancy.service'; 
 
 @Component({
   selector: 'app-delete-vacancy',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReserveVacancyService } from '../../../service/vacancy/reserve-vacancy/reserve-vacancy.service'; 
+import { ReserveVacancyService } from '../../../service/vacancy/reserve-vacancy.service'; 
 
 @Component({
   selector: 'app-reserve-vacancy',
