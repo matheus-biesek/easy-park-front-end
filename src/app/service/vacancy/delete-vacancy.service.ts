@@ -11,7 +11,7 @@ export class DeleteVacancyService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'http://18.117.250.60:8080/api-vacancy/delete-vacancy';
+  private apiUrl = 'http://localhost:8080/api-vacancy/delete-vacancy';
 
   deleteVacancy(position: number): Observable<string> {
     return this.http.post<string>(this.apiUrl, { position }, { responseType: 'text' as 'json' })

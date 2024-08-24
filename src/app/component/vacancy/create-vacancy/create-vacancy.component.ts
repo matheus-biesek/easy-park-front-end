@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CreateVacancyService } from '../../../service/vacancy/create-vacancy/create-vacancy.service';
+import { CreateVacancyService } from '../../../service/vacancy/create-vacancy.service';
 
 @Component({
   selector: 'app-vacancy-form',

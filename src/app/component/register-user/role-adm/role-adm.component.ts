@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegisterUserAdmService } from '../../../service/register-user/role-adm/register-user-adm.service';
+import { RegisterUserAdmService } from '../../../service/auth/register-user-adm.service';
 
 @Component({
   selector: 'app-role-adm',

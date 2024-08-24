@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DeleteUserService } from '../../service/delete-user.service'; 
+import { DeleteUserService } from '../../service/auth/delete-user.service'; 
 
 @Component({
   selector: 'app-delete-user',

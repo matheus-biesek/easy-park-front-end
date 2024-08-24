@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterUserClientService {
+export class RegisterUserUserService {
 
-  private apiUrl = 'http://18.117.250.60:8080/auth/register-client'; 
+  private apiUrl = 'http://localhost:8080/auth/register-client'; 
 
   constructor(
     private http: HttpClient

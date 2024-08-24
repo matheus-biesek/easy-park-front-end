@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UpdateRoleService } from './update-role.service';
+import { DeleteUserService } from './delete-user.service'; 
 
-describe('UpdateRoleService', () => {
-  let service: UpdateRoleService;
+describe('DeleteUserService', () => {
+  let service: DeleteUserService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(UpdateRoleService);
+    service = TestBed.inject(DeleteUserService);
   });
 
   it('should be created', () => {

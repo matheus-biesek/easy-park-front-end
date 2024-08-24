@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RegisterUserClientService } from '../../../service/register-user/role-client/register-user-client.service';
+import { RegisterUserUserService } from '../../../service/auth/register-user-user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class RoleClientComponent {
 
   constructor(
     private fb: FormBuilder,
-    private registerService: RegisterUserClientService,
+    private registerUserUserService: RegisterUserUserService,
     private router: Router
   ) {
     this.registerForm = this.fb.group({
@@ -47,7 +47,7 @@ export class RoleClientComponent {
     this.isSubmitting = true;
     this.errorMessage = null;
 
-    this.registerService.registerUserClient(this.registerForm.value).subscribe({
+    this.registerUserUserService.registerUserClient(this.registerForm.value).subscribe({
       next: (response) => {
         localStorage.setItem('authToken', response.token);
         this.router.navigate(['/status-vacancies']);
