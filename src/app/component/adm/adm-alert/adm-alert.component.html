@@ -1,0 +1,23 @@
+<div class="login-container">
+
+    <h2>Alerta do adiministrador</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="admAlert">Escreva aqui:</label>
+        <input id="admAlert" formControlName="admAlert" type="admAlert" />
+        <div *ngIf="loginForm.controls['admAlert'].invalid && loginForm.controls['admAlert'].touched">
+          É necessario digitar algo!.
+        </div>
+      </div>
+  
+      <button type="submit">Enviar</button>
+  
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+    </form>
+
+  </div>

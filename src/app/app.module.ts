@@ -18,7 +18,9 @@ import { NavFooterComponent } from './component/footer/nav-footer.component';
 import { UpdateRoleComponent } from './component/auth/update-role-user/update-role.component'; 
 import { NavUserComponent } from './component/navbar/nav-user/nav-user.component'; 
 import { NavLoginComponent } from './component/navbar/nav-login/nav-login.component';
-import { DeleteUserComponent } from './component/auth/delete-user/delete-user.component'; 
+import { DeleteUserComponent } from './component/auth/delete-user/delete-user.component';
+import { AdmAlertComponent } from './component/adm/adm-alert/adm-alert.component';
+import { ParkingBarrierComponent } from './component/parking-barrier/parking-barrier.component'; 
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { DeleteUserComponent } from './component/auth/delete-user/delete-user.co
     UpdateRoleComponent,
     NavUserComponent,
     NavLoginComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    AdmAlertComponent,
+    ParkingBarrierComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,9 @@ import { RoleAdmComponent } from './component/auth/register-user/role-adm/role-a
 import { AuthGuard } from './auth.guard';
 import { UpdateRoleComponent } from './component/auth/update-role-user/update-role.component'; 
 import { RoleGuard } from './role.guard';
-import { DeleteUserComponent } from './component/auth/delete-user/delete-user.component'; 
+import { DeleteUserComponent } from './component/auth/delete-user/delete-user.component';
+import { ParkingBarrierComponent } from './component/parking-barrier/parking-barrier.component';
+import { AdmAlertComponent } from './component/adm/adm-alert/adm-alert.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'register-admin', component: RoleAdmComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'update-role', component: UpdateRoleComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'delete-user', component: DeleteUserComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
+  { path: 'parking-barrier', component: ParkingBarrierComponent, canActivate: [AuthGuard] }, // USER E ADMIN
+  { path: 'adm-alert', component: AdmAlertComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: '**', redirectTo: 'login' }
 ];
 
