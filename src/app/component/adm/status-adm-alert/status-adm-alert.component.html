@@ -1,0 +1,17 @@
+<div class="login-container">
+  
+    <form action="">
+    <h4>Mensagem do Administrador</h4>
+    
+    <!-- Exibe a mensagem de erro, caso exista -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+    
+    <!-- Exibe a mensagem de alerta do administrador -->
+    <div *ngIf="admAlert" class="adm-alert">
+      {{ admAlert }}
+    </div>
+  </form>
+  
+</div>
