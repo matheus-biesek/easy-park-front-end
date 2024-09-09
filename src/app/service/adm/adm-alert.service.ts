@@ -7,7 +7,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 export class AdmAlertService {
 
-  private apiUrl = 'http://localhost:8080/adm/send-alert';
+  private apiUrl = 'http://localhost:8080/parking/send-alert';
 
   constructor(private http: HttpClient) { }
 

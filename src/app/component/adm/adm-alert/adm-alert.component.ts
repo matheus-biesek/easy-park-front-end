@@ -24,18 +24,22 @@ export class AdmAlertComponent {
     if (this.loginForm.invalid) {
       return;
     }
-
+  
     this.errorMessage = null;
-
-    this.admAlertService.sendAdmAlert(this.loginForm.value).subscribe({
-
+  
+    // Extraindo o valor da propriedade 'admAlert'
+    const alertMessage = this.loginForm.get('admAlert')?.value;
+  
+    // Enviando o valor para o serviço
+    this.admAlertService.sendAdmAlert(alertMessage).subscribe({
       next: (response) => {
         window.alert(response);
       },
       error: (error) => {
-        console.error('Erro ao criar a vaga!', error);
-        window.alert('Erro ao criar a vaga!');
+        console.error('Erro ao enviar o alerta!', error);
+        window.alert('Erro ao enviar o alerta!');
       }
     });
   }
+  
 }

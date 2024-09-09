@@ -20,7 +20,8 @@ import { NavUserComponent } from './component/navbar/nav-user/nav-user.component
 import { NavLoginComponent } from './component/navbar/nav-login/nav-login.component';
 import { DeleteUserComponent } from './component/auth/delete-user/delete-user.component';
 import { AdmAlertComponent } from './component/adm/adm-alert/adm-alert.component';
-import { ParkingBarrierComponent } from './component/parking-barrier/parking-barrier.component'; 
+import { ParkingBarrierComponent } from './component/parking-barrier/parking-barrier.component';
+import { StatusAdmAlertComponent } from './component/adm/status-adm-alert/status-adm-alert.component'; 
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ParkingBarrierComponent } from './component/parking-barrier/parking-bar
     NavLoginComponent,
     DeleteUserComponent,
     AdmAlertComponent,
-    ParkingBarrierComponent
+    ParkingBarrierComponent,
+    StatusAdmAlertComponent
   ],
   imports: [
     BrowserModule,

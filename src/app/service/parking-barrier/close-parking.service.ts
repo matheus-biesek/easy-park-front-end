@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CloseParkingService {
-  private apiUrl = 'http://localhost:8080/parking-barrier/close';
+  private apiUrl = 'http://localhost:8080/parking/close';
 
   constructor(private http: HttpClient) { }
 
-  closeParking(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
-  }
+  closeParking(): Observable<string> {
+    return this.http.get(this.apiUrl, { responseType: 'text' });
+  }  
 }
