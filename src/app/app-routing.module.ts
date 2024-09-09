@@ -12,7 +12,7 @@ import { UpdateRoleComponent } from './component/auth/update-role-user/update-ro
 import { RoleGuard } from './role.guard';
 import { DeleteUserComponent } from './component/auth/delete-user/delete-user.component';
 import { ParkingBarrierComponent } from './component/parking-barrier/parking-barrier.component';
-import { AdmAlertComponent } from './component/adm/adm-alert/adm-alert.component';
+import { AdmAlertComponent } from './component/adm/send-adm-alert/send-adm-alert.component';
 import { StatusAdmAlertComponent } from './component/adm/status-adm-alert/status-adm-alert.component';
 
 const routes: Routes = [

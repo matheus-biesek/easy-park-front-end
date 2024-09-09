@@ -4,8 +4,8 @@ import { AdmAlertService } from '../../../service/adm/adm-alert.service';
 
 @Component({
   selector: 'app-adm-alert',
-  templateUrl: './adm-alert.component.html',
-  styleUrl: './adm-alert.component.css'
+  templateUrl: './send-adm-alert.component.html',
+  styleUrl: './send-adm-alert.component.css'
 })
 export class AdmAlertComponent {
   loginForm: FormGroup;

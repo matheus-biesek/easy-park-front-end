@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdmAlertComponent } from './adm-alert.component';
+import { AdmAlertComponent } from './send-adm-alert.component';
 
 describe('AdmAlertComponent', () => {
   let component: AdmAlertComponent;

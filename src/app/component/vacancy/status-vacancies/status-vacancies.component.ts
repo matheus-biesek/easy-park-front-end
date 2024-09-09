@@ -9,14 +9,15 @@ import { Vacancy } from '../../../interface/vacancy.model';
 })
 export class StatusVacanciesComponent implements OnInit {
 
-  constructor(private statusVacanciesService: StatusVacanciesService) {}
-
   vacancies: Vacancy[] = [];
+
+  constructor(private statusVacanciesService: StatusVacanciesService) {}
 
   ngOnInit(): void {
     this.statusVacanciesService.statusVacancies().subscribe({
       next: (response: Vacancy[]) => {
-        this.vacancies = response;
+        // Ordena as vagas pela posição antes de atribuí-las à variável vacancies
+        this.vacancies = response.sort((a, b) => a.position - b.position);
       },
       error: (err) => {
         console.error('Erro ao carregar status das vagas', err);
@@ -32,9 +33,9 @@ export class StatusVacanciesComponent implements OnInit {
       case 'available':
         return 'status-available';
       case 'busy':
-        return 'status-busy'; // Adiciona a classe para o status busy
+        return 'status-busy';
       default:
-        return 'status-unknown'; // Adiciona uma classe para status desconhecido
+        return 'status-unknown';
     }
   }
 
@@ -46,7 +47,7 @@ export class StatusVacanciesComponent implements OnInit {
       case 'available':
         return 'Disponível';
       case 'busy':
-        return 'Ocupada'; // Ajusta para o status correto ou mantém como 'Ocupada'
+        return 'Ocupada';
       default:
         return 'Desconhecido';
     }
