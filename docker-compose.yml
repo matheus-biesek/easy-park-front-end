@@ -12,7 +12,7 @@ services:
       - /data-base-easy-park:/var/lib/postgresql/data
 
   spring:
-    image: easy-park-back:1.0
+    image: park-back-local:1.0
     container_name: con-spring
     ports:
       - "8080:8080"
@@ -27,7 +27,7 @@ services:
       - net-easy-park
 
   nginx:
-    image: easy-park-front:1.0
+    image: park-front-local:1.0
     container_name: con-nginx
     ports:
       - "80:80"
