@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DeleteUserService {
 
-  private apiUrl = 'http://localhost:8080/auth/delete-user';
+  private apiUrl = '/auth/delete-user';
 
   constructor(
     private http: HttpClient,

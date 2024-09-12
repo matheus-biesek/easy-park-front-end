@@ -9,7 +9,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'http://localhost:8080/auth/login'; 
+  private apiUrl = '/auth/login'; 
 
   login(credentials: { username: string; password: string }): Observable<{ token: string }> {
     return this.http.post<{ token: string }>(this.apiUrl, credentials);

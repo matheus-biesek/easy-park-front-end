@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class StatusAdmAlertService {
 
-  private apiUrl = 'http://localhost:8080/esp32/adm-alert'; // URL da sua API
+  private apiUrl = '/esp32/adm-alert'; // URL da sua API
 
   constructor(private http: HttpClient) { }
 
