@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UpdateRoleUserService } from '../../../service/auth/update-role-user.service';
+import { AuthService } from '../../../service/auth.service';
 
 @Component({
   selector: 'app-role-update',
@@ -15,8 +14,7 @@ export class UpdateRoleComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private updateRoleUserService: UpdateRoleUserService,
-    private router: Router
+    private authService: AuthService
   ) {
     this.updateForm = this.fb.group({
       username: ['', [Validators.required]],
@@ -34,7 +32,7 @@ export class UpdateRoleComponent implements OnInit {
     this.errorMessage = null;
     this.successMessage = null;
 
-    this.updateRoleUserService.updateRole(this.updateForm.value).subscribe({
+    this.authService.updateRole(this.updateForm.value).subscribe({
       next: () => {
         this.successMessage = 'Role do usuário atualizada com sucesso!';
       },
@@ -43,6 +41,5 @@ export class UpdateRoleComponent implements OnInit {
         console.error('Error:', error); // Adicione mais detalhes para depuração
       },
     });
-    
   }
 }

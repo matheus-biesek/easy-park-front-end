@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DeleteUserService } from '../../../service/auth/delete-user.service'; 
+import { AuthService } from '../../../service/auth.service'; 
 
 @Component({
   selector: 'app-delete-user',
@@ -14,7 +14,7 @@ export class DeleteUserComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private deleteUserService: DeleteUserService
+    private authService: AuthService
   ) {
     this.deleteForm = this.fb.group({
       username: ['', [Validators.required]]
@@ -31,7 +31,7 @@ export class DeleteUserComponent implements OnInit {
     this.errorMessage = null;
     this.successMessage = null;
 
-    this.deleteUserService.deleteUser(this.deleteForm.value.username).subscribe({
+    this.authService.deleteUser(this.deleteForm.value.username).subscribe({
       next: () => {
         this.successMessage = 'Usuário deletado com sucesso!';
       },

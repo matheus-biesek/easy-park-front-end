@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../../../service/auth/login.service';
-import { AuthService } from '../../../service/auth/auth.service'; 
+import { AuthService } from '../../../service/auth.service'; 
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']  // Corrigido de 'styleUrl' para 'styleUrls'
+  styleUrls: ['./login.component.css']
 })
 
 export class LoginComponent {
@@ -17,8 +16,7 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService,
-    private authService: AuthService, // Injeção do AuthService
+    private authService: AuthService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -34,9 +32,10 @@ export class LoginComponent {
 
     this.errorMessage = null;
 
-    this.loginService.login(this.loginForm.value).subscribe({
+    this.authService.loginAuth(this.loginForm.value).subscribe({
       next: (response) => {
         if (response && response.token) {
+          //Criar variavel que sera enviada a roloe do usuario para uma api de verificação a role
           this.authService.login(response.token);
           this.router.navigate(['/status-vacancies']); 
         } else {

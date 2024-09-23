@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CreateVacancyService } from '../../../service/vacancy/create-vacancy.service';
+import { VacancyService } from '../../../service/vacancy.service';
 
 @Component({
   selector: 'app-vacancy-form',
@@ -9,7 +9,7 @@ import { CreateVacancyService } from '../../../service/vacancy/create-vacancy.se
 
 export class CreateVacancyComponent {
 
-  constructor(private CreateVacancyService: CreateVacancyService) { }
+  constructor(private vacancyService: VacancyService) { }
 
   position: number = 0;
   status: string = '';
@@ -18,7 +18,7 @@ export class CreateVacancyComponent {
 
   onSubmit(): void {
     if (this.position && this.status) {
-      this.CreateVacancyService.createVacancy({ position: this.position, status: this.status })
+      this.vacancyService.createVacancy({ position: this.position, status: this.status })
         .subscribe({
           next: (response) => {
             window.alert(response);

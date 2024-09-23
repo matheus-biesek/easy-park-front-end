@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReserveVacancyService } from '../../../service/vacancy/reserve-vacancy.service'; 
+import { VacancyService } from '../../../service/vacancy.service';
 
 @Component({
   selector: 'app-reserve-vacancy',
@@ -12,11 +12,11 @@ export class ReserveVacancyComponent {
   // Status fixo como 'Reserved'
   readonly status: string = 'reserved';
 
-  constructor(private reserveVacancyService: ReserveVacancyService) {}
+  constructor(private vacancyService: VacancyService) {}
 
   reserveVacancy(): void {
     const vacancy = { position: this.position, status: this.status };
-    this.reserveVacancyService.changeStatusVacancy([vacancy]).subscribe({
+    this.vacancyService.changeStatusVacancy(vacancy).subscribe({ // Enviar apenas o objeto, não um array
       next: (response: string) => {
         window.alert(response);
         this.position = 0; // Limpa o campo de posição após o sucesso
@@ -25,5 +25,5 @@ export class ReserveVacancyComponent {
         console.error('Error reserving vacancy:', error);
       }
     });
-  }
+  }  
 }

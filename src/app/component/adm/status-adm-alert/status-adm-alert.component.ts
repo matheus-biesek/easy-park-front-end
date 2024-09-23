@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StatusAdmAlertService } from '../../../service/adm/status-adm-alert.service';
+import { ParkingLotService } from '../../../service/parking-lot.service';
 
 @Component({
   selector: 'app-status-adm-alert',
@@ -10,15 +10,16 @@ export class StatusAdmAlertComponent {
   admAlert: string = '';
   errorMessage: string = '';
 
-  constructor(private statusAdmAlertService: StatusAdmAlertService) {}
+  constructor(
+    private parkingLotService: ParkingLotService
+  ) {}
 
   ngOnInit(): void {
     this.loadAdmAlert();
   }
 
-  // Método para carregar o alerta do ADM
   loadAdmAlert(): void {
-    this.statusAdmAlertService.getAdmAlert().subscribe({
+    this.parkingLotService.getAdmAlert().subscribe({
       next: (response: string) => {
         this.admAlert = response;
       },

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DeleteVacancyService } from '../../../service/vacancy/delete-vacancy.service'; 
+import { VacancyService } from '../../../service/vacancy.service';
 
 @Component({
   selector: 'app-delete-vacancy',
@@ -8,7 +8,7 @@ import { DeleteVacancyService } from '../../../service/vacancy/delete-vacancy.se
 })
 export class DeleteVacancyComponent {
 
-  constructor(private deleteVacancyService: DeleteVacancyService) {}
+  constructor(private vacancyService: VacancyService) {}
 
   position: number | null = null;
   message: string | null = null;
@@ -16,7 +16,7 @@ export class DeleteVacancyComponent {
 
   deleteVacancy(): void {
     if (this.position !== null) {
-      this.deleteVacancyService.deleteVacancy(this.position).subscribe({
+      this.vacancyService.deleteVacancy(this.position).subscribe({
         next: (response) => {
           this.message = response;
           this.error = null;

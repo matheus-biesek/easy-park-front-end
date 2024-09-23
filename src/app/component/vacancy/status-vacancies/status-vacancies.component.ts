@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StatusVacanciesService } from '../../../service/vacancy/status-vacancies.service';
 import { Vacancy } from '../../../interface/vacancy.model';
+import { VacancyService } from '../../../service/vacancy.service';
 
 @Component({
   selector: 'app-status-vacancies',
@@ -11,10 +11,10 @@ export class StatusVacanciesComponent implements OnInit {
 
   vacancies: Vacancy[] = [];
 
-  constructor(private statusVacanciesService: StatusVacanciesService) {}
+  constructor(private vacancyService: VacancyService) {}
 
   ngOnInit(): void {
-    this.statusVacanciesService.statusVacancies().subscribe({
+    this.vacancyService.statusVacancies().subscribe({
       next: (response: Vacancy[]) => {
         // Ordena as vagas pela posição antes de atribuí-las à variável vacancies
         this.vacancies = response.sort((a, b) => a.position - b.position);

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegisterUserAdmService } from '../../../../service/auth/register-user-adm.service';
+import { AuthService } from '../../../../service/auth.service';
 
 @Component({
   selector: 'app-role-adm',
@@ -14,7 +14,7 @@ export class RoleAdmComponent {
 
   constructor(
     private fb: FormBuilder,
-    private registerService: RegisterUserAdmService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.registerForm = this.fb.group({
@@ -45,7 +45,7 @@ export class RoleAdmComponent {
     this.errorMessage = null;
     
     //Criar o serviço para fazer a requisição que o ADM faz para criar usuários
-    this.registerService.registerUserAdmin(this.registerForm.value).subscribe({
+    this.authService.registerUserAdmin(this.registerForm.value).subscribe({
       next: (response) => {
         alert("Usuário criado com sucesso!\nFaça logout para acessar a nova conta.");
       },

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AdmAlertService } from '../../../service/adm/adm-alert.service';
+import { ParkingLotService } from '../../../service/parking-lot.service';
 
 @Component({
   selector: 'app-adm-alert',
@@ -13,7 +13,7 @@ export class AdmAlertComponent {
 
   constructor(
     private fb: FormBuilder,
-    private admAlertService: AdmAlertService,// criar serviço para adicionar alerta do adm
+    private parkingLotService: ParkingLotService
   ) {
     this.loginForm = this.fb.group({
       admAlert: ['', [Validators.required]]
@@ -31,7 +31,7 @@ export class AdmAlertComponent {
     const alertMessage = this.loginForm.get('admAlert')?.value;
   
     // Enviando o valor para o serviço
-    this.admAlertService.sendAdmAlert(alertMessage).subscribe({
+    this.parkingLotService.sendAdmAlert(alertMessage).subscribe({
       next: (response) => {
         window.alert(response);
       },
@@ -41,5 +41,4 @@ export class AdmAlertComponent {
       }
     });
   }
-  
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { OpenParkingService } from '../../service/parking-barrier/open-parking.service';
-import { CloseParkingService } from '../../service/parking-barrier/close-parking.service';
+import { ParkingLotService } from '../../service/parking-lot.service';
 
 @Component({
   selector: 'app-parking-barrier',
@@ -9,12 +8,11 @@ import { CloseParkingService } from '../../service/parking-barrier/close-parking
 })
 export class ParkingBarrierComponent {
   constructor(
-    private openParkingService: OpenParkingService,
-    private closeParkingService: CloseParkingService
+    private parkingLotService: ParkingLotService
   ) {}
 
   openParkingBarrier(): void {
-    this.openParkingService.openParking().subscribe({
+    this.parkingLotService.openParking().subscribe({
       next: (response) => {
         window.alert(response);
       },
@@ -26,7 +24,7 @@ export class ParkingBarrierComponent {
   }
 
   closeParkingBarrier(): void {
-    this.closeParkingService.closeParking().subscribe({
+    this.parkingLotService.closeParking().subscribe({
       next: (response) => {
         window.alert(response);
       },
