@@ -10,62 +10,27 @@
 
 /* Estiliza o formulário */
 .login-container form {
-  max-width: 400px; /* Define a largura máxima do formulário */
+  max-width: 400px;
   width: 100%;
   padding: 2rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
-/* Estiliza os grupos de formulário */
+/* Remove a margem inferior extra dos inputs e labels, pois o Bootstrap já cuida disso */
 .form-group {
   margin-bottom: 1rem;
 }
 
-/* Estiliza os rótulos */
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-/* Estiliza os inputs */
-.form-group input {
-  width: 100%;
-  padding: 0.75rem; /* Ajusta o padding para se igualar ao do botão */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  box-sizing: border-box; /* Garante que o padding não afete a largura total */
-}
-
 /* Estiliza a mensagem de erro */
 .error-message {
-  color: red;
+  color: #dc3545; /* Utiliza a cor padrão de erro do Bootstrap */
   margin-top: 0.5rem;
 }
 
-/* Estiliza o botão de submit */
+/* Botão de submit */
 button[type="submit"] {
   width: 100%;
-  padding: 0.75rem; /* Padding ajustado para estar igual ao dos inputs */
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-/* Estiliza o botão de submit desabilitado */
-button[type="submit"][disabled] {
-  background-color: #6c757d;
-  cursor: not-allowed;
 }

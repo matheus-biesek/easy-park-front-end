@@ -1,6 +1,6 @@
 /* Estilos básicos para o rodapé */
 .footer {
-    background-color: #f8f9fa; /* Cor de fundo clara */
+  color: white;
     padding: 10px 0; /* Espaçamento interno */
     position: fixed; /* Fixa o rodapé na parte inferior da página */
     bottom: 0;

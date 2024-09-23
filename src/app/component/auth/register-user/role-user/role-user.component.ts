@@ -50,6 +50,7 @@ export class RoleUserComponent {
     this.authService.registerUserClient(this.registerForm.value).subscribe({
       next: (response) => {
         localStorage.setItem('authToken', response.token);
+        this.authService.login(response.token);
         this.router.navigate(['/status-vacancies']);
       },
       error: (error) => {
