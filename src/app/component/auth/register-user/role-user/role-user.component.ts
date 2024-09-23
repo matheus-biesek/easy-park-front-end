@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../service/auth.service';
 
@@ -23,19 +23,20 @@ export class RoleUserComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
     }, {
-      validators: this.passwordMatchValidator // Referência correta ao validador
-    });
+      validators: this.passwordMatchValidator // Mantenha a referência correta ao validador
+    } as AbstractControlOptions); // Adicione isso
+    
   }
 
   // Validador customizado para verificar se as senhas coincidem
-  passwordMatchValidator(form: FormGroup): { [key: string]: boolean } | null {
-    const password = form.get('password')?.value;
-    const confirmPassword = form.get('confirmPassword')?.value;
+  passwordMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
     if (password && confirmPassword && password !== confirmPassword) {
       return { 'mismatch': true };
     }
     return null;
-  }
+  }  
 
   onSubmit(): void {
     console.log('Submit button clicked');
