@@ -1,10 +1,28 @@
-  /* Espaçamento padrão quando o usuário está autenticado */
+/* Espaçamento padrão quando o usuário está autenticado */
 .authenticated {
-    margin-right: 250px; /* Define a margem para dar espaço para a barra lateral */
+  margin-right: 175px; /* Define a margem para dar espaço para a barra lateral */
+}
+
+/* Classe wrapper para manter o layout */
+.main-wrapper {
+  display: flex; /* Permite flexibilidade no layout */
+  flex-direction: column; /* Coloca o conteúdo em coluna */
+  transition: margin-right 0.3s ease; /* Transição suave para mudanças de margem */
+}
+
+/* Remover o espaçamento lateral quando o usuário não está autenticado */
+.main-content {
+  margin-right: 0; /* Remove o espaço extra se não houver barra lateral */
+}
+
+/* Responsividade */
+@media (max-width: 300px) {
+  .authenticated {
+      margin-right: 0; /* Remove a margem em telas pequenas */
   }
   
-  /* Remover o espaçamento lateral quando o usuário não está autenticado */
   .main-content {
-    margin-right: 0; /* Remove o espaço extra se não houver barra lateral */
+      margin-right: 0; /* Garantir que não há margem em telas pequenas */
+      padding: 10px; /* Adiciona algum padding se necessário */
   }
-  
+}
