@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateVacancyComponent } from './component/vacancy/create-vacancy/create-vacancy.component';
 import { StatusVacanciesComponent } from './component/vacancy/status-vacancies/status-vacancies.component';
-import { ReserveVacancyComponent } from './component/vacancy/reserve-vacancy/reserve-vacancy.component';
 import { DeleteVacancyComponent } from './component/vacancy/delete-vacancy/delete-vacancy.component';
 import { LoginComponent } from './component/auth/login/login.component'; 
 import { RoleUserComponent } from './component/auth/register-user/role-user/role-user.component'; 
@@ -28,7 +27,6 @@ import { StatusAdmAlertComponent } from './component/adm/status-adm-alert/status
     AppComponent,
     CreateVacancyComponent,
     StatusVacanciesComponent,
-    ReserveVacancyComponent,
     DeleteVacancyComponent,
     LoginComponent,
     RoleUserComponent,
