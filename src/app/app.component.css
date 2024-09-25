@@ -1,0 +1,10 @@
+  /* Espaçamento padrão quando o usuário está autenticado */
+.authenticated {
+    margin-right: 250px; /* Define a margem para dar espaço para a barra lateral */
+  }
+  
+  /* Remover o espaçamento lateral quando o usuário não está autenticado */
+  .main-content {
+    margin-right: 0; /* Remove o espaço extra se não houver barra lateral */
+  }
+  

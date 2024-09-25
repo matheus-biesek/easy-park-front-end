@@ -1,0 +1,23 @@
+.fixed-right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #343a40; /* Cor de fundo da barra */
+    padding: 10px;
+    z-index: 1000; /* Mantém a navbar sempre visível */
+  }
+  
+.main-content {
+    margin-right: 250px; /* Espaçamento para o conteúdo não ficar sob a navbar */
+    padding: 20px;
+  }
+  
+.navbar-nav {
+    flex-direction: column; /* Colocar os itens do nav em coluna */
+  }
+  
+.ml-auto {
+    margin-top: auto; /* Posiciona o logout na parte inferior */
+  }
