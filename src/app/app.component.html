@@ -1,7 +1,7 @@
 <app-nav-login></app-nav-login>
 <app-nav-footer></app-nav-footer>
-<app-nav-adm *ngIf="isAuthenticated && userRole === 'ADMIN'"></app-nav-adm>
-<app-nav-user *ngIf="isAuthenticated && userRole === 'USER'"></app-nav-user>
+<app-nav-adm *ngIf="isAuthenticated && userRole === 'ADMIN'"></app-nav-adm> // colocar aqui o metodo que verifica a role
+<app-nav-user *ngIf="isAuthenticated && userRole === 'USER'"></app-nav-user>// colocar aqui o metodo que verifica a role
 
 <div [ngClass]="{'authenticated': isAuthenticated}" class="main-wrapper">
   <div *ngIf="isAuthenticated" class="main-content">
