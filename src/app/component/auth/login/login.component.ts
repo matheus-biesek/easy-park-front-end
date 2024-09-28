@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../service/auth.service'; 
 import { Router } from '@angular/router';
+import { SessionService } from '../../../service/session.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private sessionService: SessionService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -35,8 +37,8 @@ export class LoginComponent {
     this.authService.loginAuth(this.loginForm.value).subscribe({
       next: (response) => {
         if (response && response.token) {
-          //Criar variavel que sera enviada a roloe do usuario para uma api de verificação a role
-          this.authService.login(response.token);
+          //Criar variavel que sera enviada a role do usuario para uma api de verificação a role
+          this.sessionService.login(response.token);
           this.router.navigate(['/status-vacancies']); 
         } else {
           this.errorMessage = 'Resposta inválida do servidor.';

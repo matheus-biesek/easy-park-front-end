@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../service/auth.service';
+import { SessionService } from '../../../service/session.service';
 
 @Component({
   selector: 'app-nav-adm',
@@ -10,12 +11,12 @@ import { AuthService } from '../../../service/auth.service';
 export class TopComponent {
 
   constructor(
-    private authService: AuthService,
+    private sessionService: SessionService,
     private router: Router
   ) {}
 
   logout(): void {
-    this.authService.logout();
+    this.sessionService.logout();
     this.router.navigate(['/login']);
   }
 }

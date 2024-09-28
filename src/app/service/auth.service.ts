@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 import { UtilService } from './util.service';
@@ -28,7 +27,7 @@ export class AuthService {
         catchError(this.utilService.handleError)
       );
   }
-  
+
   tokenIsValidUser(): Observable<boolean> {
     return this.http.get<boolean>(this.urlTokenIsValidUser)
       .pipe(
@@ -72,51 +71,5 @@ export class AuthService {
     .pipe(
       catchError(this.utilService.handleError)
     );
-  }
-
-  // UTILS para a quebrado do token do usuario e verificar a role
-  private userRoleSubject = new BehaviorSubject<string | null>(this.getUserRole());
-  userRole$ = this.userRoleSubject.asObservable();
-  getUserRole(): string | null {
-    if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
-      return null;
-    }
-    const token = localStorage.getItem('authToken');
-    if (!token) {
-      return null;
-    }
-    try {
-      const payload = this.parseJwt(token);
-      switch (payload.role) {
-        case 0:
-          return 'ADMIN';
-        case 1:
-          return 'USER';
-        default:
-          return null;
-      }
-    } catch (error) {
-      console.error('Erro ao decodificar o token:', error);
-      return null;
-    }
-  }
-  logout(): void {
-    if (typeof localStorage !== 'undefined') {
-      localStorage.removeItem('authToken');
-    }
-    this.userRoleSubject.next(null);
-  }
-  login(token: string): void {
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('authToken', token);
-      this.userRoleSubject.next(this.getUserRole());
-    }
-  }
-  private parseJwt(token: string): any {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map((c: string) =>
-      '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-    return JSON.parse(jsonPayload);
   }
 }

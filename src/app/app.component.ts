@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './service/auth.service';
-import { Router } from '@angular/router';
+import { SessionService } from './service/session.service';
 
 @Component({
   selector: 'app-root',
@@ -14,19 +13,13 @@ export class AppComponent implements OnInit {
   userRole: string | null = null;
 
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private sessionService: SessionService
   ) {}
 
   ngOnInit() {
-    this.authService.userRole$.subscribe(role => {
-      this.userRole = role;
-      this.isAuthenticated = !!role;
+    this.sessionService.userRole$.subscribe(role => {
+    this.userRole = role;
+    this.isAuthenticated = !!role;
     });
-  }
-
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
   }
 }
