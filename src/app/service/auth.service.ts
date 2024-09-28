@@ -13,8 +13,7 @@ export class AuthService {
   private urlRegisterAdm = 'http://localhost:8080/auth/register-adm';
   private urlResgisterUser = 'http://localhost:8080/auth/register-client';
   private urlUpdateRole = 'http://localhost:8080/auth/update-role';
-  private urlTokenIsValidAdm = 'http://localhost:8080/auth/token-is-valid-adm';
-  private urlTokenIsValidUser = 'http://localhost:8080/auth/token-is-valid-user';
+  private urlTokenValidRole = 'http://localhost:8080/token/jwt-is-valid-role';
 
   constructor(
     private http: HttpClient,
@@ -22,18 +21,20 @@ export class AuthService {
   ) {}
 
   tokenIsValidAdm(): Observable<boolean> {
-    return this.http.get<boolean>(this.urlTokenIsValidAdm)
+    const body = { role: 'ADMIN' };
+    return this.http.post<boolean>(this.urlTokenValidRole, body)
       .pipe(
         catchError(this.utilService.handleError)
       );
   }
-
+  
   tokenIsValidUser(): Observable<boolean> {
-    return this.http.get<boolean>(this.urlTokenIsValidUser)
+    const body = { role: 'USER' };
+    return this.http.post<boolean>(this.urlTokenValidRole, body)
       .pipe(
         catchError(this.utilService.handleError)
       );
-  }
+  }  
 
   updateRole(userData: { username: string, role: string }): Observable<string> {
     return this.http.put<string>(this.urlUpdateRole, userData, { responseType: 'text' as 'json' })

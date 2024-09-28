@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ParkingLotService } from '../../service/parking-lot.service';
+import { EnumGate } from '../../interface/enum-gate.model';
 
 @Component({
   selector: 'app-parking-barrier',
@@ -12,28 +13,28 @@ export class ParkingBarrierComponent {
     private parkingLotService: ParkingLotService
   ) {}
 
-  openParkingBarrier(): void {
-    this.parkingLotService.openParking().subscribe({
-      next: (response) => {
+  openGateOne() {
+    this.parkingLotService.changeGateStatus(EnumGate.ONE, true).subscribe(
+      response => {
         window.alert(response);
       },
-      error: (error) => {
-        console.error('Erro ao abrir o portão!', error);
-        window.alert('Erro ao abrir o portão!');
+      error => {
+        window.alert("Erro ao abrir o portão 1!:");
+        console.error('Erro ao abrir o portão 1:', error);
       }
-    });
+    );
   }
 
-  closeParkingBarrier(): void {
-    this.parkingLotService.closeParking().subscribe({
-      next: (response) => {
+  closeGateOne() {
+    this.parkingLotService.changeGateStatus(EnumGate.ONE, false).subscribe(
+      response => {
         window.alert(response);
       },
-      error: (error) => {
-        console.error('Erro ao fechar o portão!', error);
-        window.alert('Erro ao fechar o portão!');
+      error => {
+        window.alert('Erro ao fechar o portão 1!');
+        console.log('Erro ao fechar o portão 1:', error);
       }
-    });
+    );
   }
 }
 

@@ -10,7 +10,7 @@ export class VacancyService {
 
   private urlCreateVacancy = 'http://localhost:8080/vacancy/create-vacancy';
   private urlDeleteVacancy = 'http://localhost:8080/vacancy/delete-vacancy';
-  private urlStatusAllVacancy = 'http://localhost:8080/vacancy/status-all-vacancy';
+  private urlStatusAllVacancy = 'http://localhost:8080/vacancy/get-vacancies-status';
 
   constructor(
     private http: HttpClient,
