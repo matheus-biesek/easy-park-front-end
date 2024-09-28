@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate {
   
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
   
-    return this.http.post<boolean>(this.apiUrl, { token: authToken }, { headers }).pipe(
+    return this.http.get<boolean>(this.apiUrl).pipe(
       map(isValid => {
         if (isValid) {
           return true;
@@ -43,6 +43,6 @@ export class AuthGuard implements CanActivate {
         this.router.navigate(['/login']);
         return of(false);
       })
-    );
+    );    
   }
 }

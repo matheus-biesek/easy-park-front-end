@@ -18,22 +18,6 @@
         </div>
       </div>
   
-      <div class="form-group">
-        <label for="status">Status:</label>
-        <select
-          id="status"
-          name="status"
-          [(ngModel)]="status"
-          required
-          #statusSelect="ngModel"
-        >
-          <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
-        </select>
-        <div *ngIf="statusSelect.invalid && (statusSelect.dirty || statusSelect.touched)" class="error-message">
-          <div *ngIf="statusSelect.errors?.['required']">É necessario digital o status da vaga!</div>
-        </div>
-      </div>
-  
       <button type="submit" [disabled]="vacancyForm.invalid">Criar vaga</button>
     </form>
   </div>

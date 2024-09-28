@@ -7,6 +7,7 @@ import { ParkingLotService } from '../../service/parking-lot.service';
   styleUrl: './parking-barrier.component.css'
 })
 export class ParkingBarrierComponent {
+  
   constructor(
     private parkingLotService: ParkingLotService
   ) {}

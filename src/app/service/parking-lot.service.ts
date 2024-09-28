@@ -8,42 +8,41 @@ import { UtilService } from './util.service';
 })
 export class ParkingLotService {
 
-  private urlParkingBarrierClose = 'http://localhost:8080/parking/close';
-  private urlParkingBarrierOpen = 'http://localhost:8080/parking/open';
-  private urlSendAlert = 'http://localhost:8080/parking/send-alert';
-  private urlStatusAlert = 'http://localhost:8080/esp32/adm-alert';
+  private urlParkingBarrierClose = 'http://localhost:8080/parking-lot/close-parking-barrier';
+  private urlParkingBarrierOpen = 'http://localhost:8080/parking-lot/open-parking-barrier';
+  private urlSendAlert = 'http://localhost:8080/parking-lot/send-adm-alert';
+  private urlStatusAlert = 'http://localhost:8080/parking-lot/collect-message-adm';
 
   constructor(
     private http: HttpClient,
     private utilService: UtilService
   ) {}
-
+  //ok
   closeParking(): Observable<string> {
-    return this.http.get(this.urlParkingBarrierClose, { responseType: 'text' })
-    .pipe(
-      catchError(this.utilService.handleError)
-    );
+    return this.http.put<string>(this.urlParkingBarrierClose, {}, { responseType: 'text' as 'json' })
+      .pipe(
+        catchError(this.utilService.handleError)
+      );
   }
-
+  //ok
   openParking(): Observable<string> {
-    return this.http.get(this.urlParkingBarrierOpen, { responseType: 'text' })
+    return this.http.put<string>(this.urlParkingBarrierOpen,{}, { responseType: 'text' as 'json' })
     .pipe(
       catchError(this.utilService.handleError)
     );
   }
 
-  sendAdmAlert(admAlert: string): Observable<string> {
-    return this.http.post<string>(this.urlSendAlert, { admAlert }, { responseType: 'text' as 'json' })
+  sendAdmAlert(message: string): Observable<string> {
+    return this.http.put<string>(this.urlSendAlert, { message }, { responseType: 'text' as 'json' })
       .pipe(
         catchError(this.utilService.handleError)
       );
   }
 
-  getAdmAlert(): Observable<string> {
+  collectAdmAlert(): Observable<string> {
     return this.http.get<string>(this.urlStatusAlert, { responseType: 'text' as 'json' })
       .pipe(
         catchError(this.utilService.handleError)
       );
   }
-
 }

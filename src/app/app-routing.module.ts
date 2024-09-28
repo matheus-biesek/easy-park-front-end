@@ -4,8 +4,7 @@ import { LoginComponent } from './component/auth/login/login.component';
 import { CreateVacancyComponent } from './component/vacancy/create-vacancy/create-vacancy.component';
 import { StatusVacanciesComponent } from './component/vacancy/status-vacancies/status-vacancies.component';
 import { DeleteVacancyComponent } from './component/vacancy/delete-vacancy/delete-vacancy.component';
-import { RoleUserComponent } from './component/auth/register-user/role-user/role-user.component'; 
-import { RoleAdmComponent } from './component/auth/register-user/role-adm/role-adm.component'; 
+import { RoleUserComponent } from './component/auth/register-user/role-user/role-user.component';
 import { AuthGuard } from './auth.guard';
 import { UpdateRoleComponent } from './component/auth/update-role-user/update-role.component'; 
 import { RoleGuard } from './role.guard';
@@ -20,7 +19,6 @@ const routes: Routes = [
   { path: 'status-vacancies', component: StatusVacanciesComponent, canActivate: [AuthGuard] }, // USER E ADMIN
   { path: 'delete-vacancy', component: DeleteVacancyComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'register-client', component: RoleUserComponent },
-  { path: 'register-admin', component: RoleAdmComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'update-role', component: UpdateRoleComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'delete-user', component: DeleteUserComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'parking-barrier', component: ParkingBarrierComponent, canActivate: [AuthGuard] }, // USER E ADMIN

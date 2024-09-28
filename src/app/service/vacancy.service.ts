@@ -8,33 +8,38 @@ import { UtilService } from './util.service';
 })
 export class VacancyService {
 
-  private urlCreateVacancy = 'http://localhost:8080/api-vacancy/create-vacancy';
-  private urlDeleteVacancy = 'http://localhost:8080/api-vacancy/delete-vacancy';
-  private urlStatusAllVacancy = 'http://localhost:8080/api-vacancy/status-all-vacancy';
+  private urlCreateVacancy = 'http://localhost:8080/vacancy/create-vacancy';
+  private urlDeleteVacancy = 'http://localhost:8080/vacancy/delete-vacancy';
+  private urlStatusAllVacancy = 'http://localhost:8080/vacancy/status-all-vacancy';
 
   constructor(
     private http: HttpClient,
     private utilService: UtilService
   ) {}
-
-  statusVacancies(): Observable<any> {
+  //ok
+  statusVacancies(): Observable<any> { // retorno é uma lista da classe vaga
     return this.http.get<any>(this.urlStatusAllVacancy)
     .pipe(
       catchError(this.utilService.handleError)
     );
   }  
-
+  // ok
   deleteVacancy(position: number): Observable<string> {
-    return this.http.post<string>(this.urlDeleteVacancy, { position }, { responseType: 'text' as 'json' })
+    const options = {
+      body: { position },
+      responseType: 'text' as 'json'
+    };
+    return this.http.delete<string>(this.urlDeleteVacancy, options)
       .pipe(
         catchError(this.utilService.handleError)
       );
-  }
-
-  createVacancy(vacancy: { position: number; status: string }): Observable<string> {
-    return this.http.post(this.urlCreateVacancy, vacancy, { responseType: 'text' })
-    .pipe(
-      catchError(this.utilService.handleError)
-    );
-  }
+  }  
+  // ok
+  createVacancy(position: number): Observable<string> {
+    const body = { position };
+    return this.http.post(this.urlCreateVacancy, body, { responseType: 'text' })
+      .pipe(
+        catchError(this.utilService.handleError)
+      );
+  }  
 }

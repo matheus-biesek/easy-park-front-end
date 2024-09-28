@@ -19,7 +19,7 @@ export class StatusAdmAlertComponent {
   }
 
   loadAdmAlert(): void {
-    this.parkingLotService.getAdmAlert().subscribe({
+    this.parkingLotService.collectAdmAlert().subscribe({
       next: (response: string) => {
         this.admAlert = response;
       },

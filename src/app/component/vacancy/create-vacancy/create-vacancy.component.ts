@@ -9,16 +9,15 @@ import { VacancyService } from '../../../service/vacancy.service';
 
 export class CreateVacancyComponent {
 
-  constructor(private vacancyService: VacancyService) { }
+  constructor(
+    private vacancyService: VacancyService
+  ) {}
 
   position: number = 0;
-  status: string = '';
-
-  statuses = ['available', 'busy', 'reserved'];
-
+  
   onSubmit(): void {
-    if (this.position && this.status) {
-      this.vacancyService.createVacancy({ position: this.position, status: this.status })
+    if (this.position) {
+      this.vacancyService.createVacancy( this.position )
         .subscribe({
           next: (response) => {
             window.alert(response);

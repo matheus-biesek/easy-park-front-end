@@ -8,8 +8,7 @@ import { CreateVacancyComponent } from './component/vacancy/create-vacancy/creat
 import { StatusVacanciesComponent } from './component/vacancy/status-vacancies/status-vacancies.component';
 import { DeleteVacancyComponent } from './component/vacancy/delete-vacancy/delete-vacancy.component';
 import { LoginComponent } from './component/auth/login/login.component'; 
-import { RoleUserComponent } from './component/auth/register-user/role-user/role-user.component'; 
-import { RoleAdmComponent } from './component/auth/register-user/role-adm/role-adm.component'; 
+import { RoleUserComponent } from './component/auth/register-user/role-user/role-user.component';
 import { authInterceptorFn } from './service/authInterceptor.service'; 
 import { AuthGuard } from './auth.guard';
 import { TopComponent } from './component/navbar/nav-adm/nav-adm.component'; 
@@ -30,7 +29,6 @@ import { StatusAdmAlertComponent } from './component/adm/status-adm-alert/status
     DeleteVacancyComponent,
     LoginComponent,
     RoleUserComponent,
-    RoleAdmComponent,
     TopComponent,
     NavFooterComponent,
     UpdateRoleComponent,
