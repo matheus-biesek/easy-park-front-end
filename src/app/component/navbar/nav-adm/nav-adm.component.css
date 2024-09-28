@@ -1,23 +1,32 @@
 .fixed-right {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 175px;
-    background-color: #343a40; /* Cor de fundo da barra */
-    padding: 10px;
-    z-index: 1000; /* Mantém a navbar sempre visível */
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 175px; /* Largura padrão para mobile */
+  background-color: #343a40;
+  padding: 10px;
+  z-index: 1000;
+}
+
+/* Dispositivos maiores que 768px (tablets e acima) */
+@media (min-width: 900px) {
+  .fixed-right {
+      width: 250px; /* Aumenta a largura da barra para dispositivos maiores */
   }
-  
-.main-content {
-    margin-right: 175px; /* Espaçamento para o conteúdo não ficar sob a navbar */
-    padding: 20px;
+
+  .main-content {
+      margin-right: 250px; /* Ajusta o espaço do conteúdo principal */
   }
-  
-.navbar-nav {
-    flex-direction: column; /* Colocar os itens do nav em coluna */
+}
+
+/* Dispositivos maiores que 1024px (desktops) */
+@media (min-width: 1024px) {
+  .fixed-right {
+      width: 300px; /* Aumenta ainda mais para telas maiores */
   }
-  
-.ml-auto {
-    margin-top: auto; /* Posiciona o logout na parte inferior */
+
+  .main-content {
+      margin-right: 300px;
   }
+}
