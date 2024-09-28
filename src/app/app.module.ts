@@ -8,7 +8,6 @@ import { CreateVacancyComponent } from './component/vacancy/create-vacancy/creat
 import { StatusVacanciesComponent } from './component/vacancy/status-vacancies/status-vacancies.component';
 import { DeleteVacancyComponent } from './component/vacancy/delete-vacancy/delete-vacancy.component';
 import { LoginComponent } from './component/auth/login/login.component'; 
-import { RoleUserComponent } from './component/auth/register-user/role-user/role-user.component';
 import { authInterceptorFn } from './service/authInterceptor.service'; 
 import { AuthGuard } from './auth.guard';
 import { TopComponent } from './component/navbar/nav-adm/nav-adm.component'; 
@@ -19,7 +18,8 @@ import { NavLoginComponent } from './component/navbar/nav-login/nav-login.compon
 import { DeleteUserComponent } from './component/auth/delete-user/delete-user.component';
 import { AdmAlertComponent } from './component/adm/send-adm-alert/send-adm-alert.component';
 import { ParkingBarrierComponent } from './component/parking-barrier/parking-barrier.component';
-import { StatusAdmAlertComponent } from './component/adm/status-adm-alert/status-adm-alert.component'; 
+import { StatusAdmAlertComponent } from './component/adm/status-adm-alert/status-adm-alert.component';
+import { RegisterUserComponent } from './component/auth/register-user/register-user.component'; 
 
 @NgModule({
   declarations: [
@@ -28,7 +28,6 @@ import { StatusAdmAlertComponent } from './component/adm/status-adm-alert/status
     StatusVacanciesComponent,
     DeleteVacancyComponent,
     LoginComponent,
-    RoleUserComponent,
     TopComponent,
     NavFooterComponent,
     UpdateRoleComponent,
@@ -37,7 +36,8 @@ import { StatusAdmAlertComponent } from './component/adm/status-adm-alert/status
     DeleteUserComponent,
     AdmAlertComponent,
     ParkingBarrierComponent,
-    StatusAdmAlertComponent
+    StatusAdmAlertComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,

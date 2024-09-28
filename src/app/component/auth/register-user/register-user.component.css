@@ -1,0 +1,37 @@
+/* Centraliza o contêiner na página */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 1rem;
+  }
+  
+  /* Estiliza o formulário */
+  .login-container form {
+    max-width: 400px; /* Define a largura máxima do formulário */
+    width: 100%;
+    padding: 2rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    background-color: #fff;
+  }
+  
+  /* Estiliza a mensagem de erro */
+  .error-message {
+    color: #dc3545;
+    margin-top: 0.5rem;
+  }
+  
+  /* Remove estilos manuais de inputs e botão, usando Bootstrap */
+  button[type="submit"] {
+    width: 100%;
+  }
+  
+  /* Remove o cursor do botão desabilitado */
+  button[type="submit"][disabled] {
+    cursor: not-allowed;
+  }
+  

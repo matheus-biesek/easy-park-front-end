@@ -44,15 +44,16 @@ export class SessionService {
         })
     )
     .subscribe(({ isValidAdmin, isValidUser }: RoleValidationResponse) => {
-        if (isValidAdmin) {
-            this.userRoleSubject.next('ADMIN');
-        } else if (isValidUser) {
-            this.userRoleSubject.next('USER');
+      if (isValidAdmin) {
+        this.userRoleSubject.next('ADMIN');
+      } else if (isValidUser) {
+          this.userRoleSubject.next('USER');
         } else {
+            localStorage.removeItem("authToken");
             this.userRoleSubject.next(null);
-        }
+          }
     });
-}
+  }
 
   logout(): void {
     localStorage.removeItem('authToken');

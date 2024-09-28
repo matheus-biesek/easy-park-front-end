@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { AbstractControl, AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../../service/auth.service';
-import { SessionService } from '../../../../service/session.service';
+import { Router } from '@angular/router'; 
+import { AuthService } from '../../../service/auth.service';
+import { SessionService } from '../../../service/session.service';
 
 @Component({
-  selector: 'app-role-user',
-  templateUrl: './role-user.component.html',
-  styleUrls: ['./role-user.component.css']
+  selector: 'app-register-user',
+  templateUrl: './register-user.component.html',
+  styleUrl: './register-user.component.css'
 })
-export class RoleUserComponent {
+export class RegisterUserComponent {
   registerForm: FormGroup;
   isSubmitting = false;
   errorMessage: string | null = null;
