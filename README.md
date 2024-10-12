@@ -1,19 +1,36 @@
 # Sistema de Estacionamento - Frontend (Angular)
 
-Este projeto representa o **frontend** do sistema de estacionamento, desenvolvido com **Angular** e integrado ao backend em **Java Spring**. A aplicação fornece uma interface para gerenciamento de vagas, controle da cancela e exibição de mensagens administrativas. Todo o frontend está **dockerizado** e configurado para funcionar em conjunto com **Nginx** em produção.
+Este projeto representa o **frontend** do sistema de estacionamento, desenvolvido com **Angular** e integrado ao backend em **Java Spring**. A aplicação fornece uma interface para gerenciamento de vagas, controle da cancela e exibição de mensagens administrativas. Todo o frontend está **dockerizado** e configurado para funcionar em conjunto com **Nginx**.
 
 ## Estrutura do Projeto
 
 O projeto está organizado em três diretórios principais dentro de `src`:
 
-1. **Components**: Contém os componentes da aplicação que gerenciam a interface do usuário.
+1. **Components**: Contém os componentes da aplicação que gerenciam a interface do usuário, divididos em:
+   - **Navbar Top**: Exibe o nome da marca e outras informações relevantes no topo da página.
+   - **Footer**: Mostra os direitos autorais do site e outras informações no rodapé.
+   - **Navbar à Esquerda**: Navegação lateral que varia conforme o tipo de usuário:
+     - **Navbar para Administradores**: Inclui opções de gerenciamento de vagas, usuários e mensagens.
+     - **Navbar para Usuários Comuns**: Exibe opções mais restritas, como visualização de vagas e status.
+   - **Controle da Cancela**: Componente que permite abrir e fechar a cancela do estacionamento.
+   - **Status das Vagas**: Componente que exibe o status atual das vagas de estacionamento (ocupadas ou livres).
+   - **Criar Vaga**: Permite ao administrador criar novas vagas de estacionamento.
+   - **Deletar Vaga**: Componente usado para remover vagas existentes.
+   - **Registro de Usuário**: Componente para o registro de novos usuários no sistema.
+   - **Deletar Usuário**: Permite ao administrador remover usuários do sistema.
+   - **Atualizar Role do Usuário**: Componente utilizado para alterar o papel (role) de um usuário (por exemplo, de comum para administrador).
+   - **Visualizar Mensagem**: Exibe mensagens enviadas pelo administrador do site para os usuários.
+   - **Enviar Mensagem (Admin)**: Permite que o administrador envie mensagens para todos os usuários ou grupos específicos.
+   - **Login**: Componente para autenticação e login de usuários na aplicação.
+
 2. **Interfaces**: Define as **enums** e as interfaces de dados utilizadas pelos componentes e serviços.
+
 3. **Services**: Contém todos os serviços da aplicação, divididos em:
-   - **Serviços de requisições ao backend**: Responsáveis por interagir com a API REST do backend em Java Spring.
-   - **Serviço de interceptação**: Adiciona o token JWT no header de todas as requisições feitas pela aplicação.
-   - **Serviço de sessão**: Armazena a sessão do usuário e verifica qual é o papel (**role**) do usuário, controlando o acesso aos componentes e funcionalidades.
-   - **Serviços de utilidades (utils)**: Contém funcionalidades reutilizáveis em diferentes partes da aplicação.
-   - **Serviço de autenticação**: Gerencia a autentificação dos usuários.
+   - **Serviços de Requisições ao Backend**: Responsáveis por interagir com a API REST do backend em Java Spring.
+   - **Serviço de Interceptação**: Adiciona o token JWT no header de todas as requisições feitas pela aplicação.
+   - **Serviço de Sessão**: Armazena a sessão do usuário e verifica qual é o papel (**role**) do usuário, controlando o acesso aos componentes e funcionalidades.
+   - **Serviços de Utilidades (Utils)**: Contém funcionalidades reutilizáveis em diferentes partes da aplicação.
+   - **Serviço de Autenticação**: Gerencia a autentificação dos usuários.
 
 ## Controle de Acesso e Autenticação
 
@@ -22,7 +39,26 @@ O projeto está organizado em três diretórios principais dentro de `src`:
 
 ## Docker e Nginx
 
-O frontend está configurado para ser executado dentro de um container **Docker**, servido por **Nginx**.
+O frontend está configurado para ser executado dentro de um container **Docker**, servido por **Nginx**. No entanto, caso o usuário tenha o **Angular CLI** instalado localmente em sua máquina, a aplicação também pode ser executada diretamente com o **servidor Angular** para desenvolvimento e testes. Para rodar a aplicação sem Docker, siga os passos:
+
+1. Certifique-se de que o **Angular CLI** está instalado:
+   ```
+   npm install -g @angular/cli
+   ```
+
+2. Instale as dependências do projeto:
+   ```
+   npm install
+   ```
+
+3. Execute o servidor de desenvolvimento:
+   ```
+   ng serve
+   ```
+
+4. Acesse a aplicação no navegador em `http://localhost:4200`.
+
+Dessa forma, o desenvolvedor pode optar por rodar o frontend diretamente no ambiente de desenvolvimento local ou utilizar o Docker com Nginx para simular o ambiente de produção.
 
 ### Como Rodar Localmente com Docker
 
@@ -37,8 +73,10 @@ O frontend está configurado para ser executado dentro de um container **Docker*
    ```
    docker compose up
    ```
-   Isso irá subir a aplicação frontend juntamente com o backend e o banco de dados **PostgreSQL**.
+   Isso irá subir a aplicação frontend juntamente com o backend e o banco de dados **PostgreSQL**. 
 
+   **Nota:** Para que a aplicação funcione corretamente, é necessário que você tenha a **imagem do backend** disponível. Caso ainda não tenha a imagem Docker do backend, certifique-se de construir ou puxar essa imagem antes de rodar o `docker-compose`, já que o frontend depende do backend para a autenticação e outras funcionalidades.
+   
 ### Arquivo `docker-compose.yml`
 
 O `docker-compose.yml` da aplicação define três serviços principais:
