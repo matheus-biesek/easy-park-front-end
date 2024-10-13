@@ -12,11 +12,13 @@ import { DeleteUserComponent } from './component/auth/delete-user/delete-user.co
 import { ParkingBarrierComponent } from './component/parking-barrier/parking-barrier.component';
 import { AdmAlertComponent } from './component/adm/send-adm-alert/send-adm-alert.component';
 import { StatusAdmAlertComponent } from './component/adm/status-adm-alert/status-adm-alert.component';
+import { VacancyStatisticsChartComponent } from './component/vacancy/vacancy-statistics-chart/vacancy-statistics-chart.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'create-vacancy', component: CreateVacancyComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'status-vacancies', component: StatusVacanciesComponent, canActivate: [AuthGuard] }, // USER E ADMIN
+  { path: 'vacancy-statiscs', component: VacancyStatisticsChartComponent, canActivate: [AuthGuard] }, // USER E ADMIN
   { path: 'delete-vacancy', component: DeleteVacancyComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },
   { path: 'register-client', component: RegisterUserComponent },
   { path: 'update-role', component: UpdateRoleComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ADMIN' } },

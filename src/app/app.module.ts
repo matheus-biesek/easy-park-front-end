@@ -19,7 +19,8 @@ import { DeleteUserComponent } from './component/auth/delete-user/delete-user.co
 import { AdmAlertComponent } from './component/adm/send-adm-alert/send-adm-alert.component';
 import { ParkingBarrierComponent } from './component/parking-barrier/parking-barrier.component';
 import { StatusAdmAlertComponent } from './component/adm/status-adm-alert/status-adm-alert.component';
-import { RegisterUserComponent } from './component/auth/register-user/register-user.component'; 
+import { RegisterUserComponent } from './component/auth/register-user/register-user.component';
+import { VacancyStatisticsChartComponent } from './component/vacancy/vacancy-statistics-chart/vacancy-statistics-chart.component'; 
 
 @NgModule({
   declarations: [
@@ -37,13 +38,14 @@ import { RegisterUserComponent } from './component/auth/register-user/register-u
     AdmAlertComponent,
     ParkingBarrierComponent,
     StatusAdmAlertComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    VacancyStatisticsChartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     AuthGuard,
