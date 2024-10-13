@@ -1,22 +1,6 @@
-.chart-container {
-display: flex;
-flex-direction: column;   /* Alinha os elementos verticalmente */
-justify-content: center;  /* Centraliza horizontalmente */
-align-items: center;      /* Centraliza verticalmente */
-text-align: center;       /* Centraliza o texto dos títulos */
-width: 90%;
-padding: 20px;            /* Adiciona espaçamento ao redor dos gráficos */
-}
-  
 canvas {
-width: 60% !important;  /* Define a largura do canvas como 60% do container */
-height: auto !important; /* Mantém a altura proporcional à largura */
-max-width: 1000px;       /* Limita a largura máxima do gráfico */
-margin: 20px 0;         /* Espaçamento entre os gráficos */
+    height: auto !important;
+    max-width: 1000px;
+    margin: 50px;
+    padding-right: 60px;
 }
-  
-  
-h2 {
-margin: 50px 0;           /* Adiciona 20px de margem em cima e embaixo dos títulos */
-}
-  

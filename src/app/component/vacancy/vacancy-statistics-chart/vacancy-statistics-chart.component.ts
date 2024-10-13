@@ -22,26 +22,26 @@ export class VacancyStatisticsChartComponent implements AfterViewInit {
   loadStatistics(): void {
     this.vacancyStatisticsService.getWeeklyVacancyOccupied().subscribe(data => {
       this.weeklyVacancyOccupied = data;
-      this.createChart('vacancyOccupiedChart', this.weeklyVacancyOccupied);
+      this.createChart('vacancyOccupiedChart', this.weeklyVacancyOccupied, "Taxa de Ocupação Diária de Vagas no Estacionamento (Segunda a Domingo)");
     });
 
     this.vacancyStatisticsService.getWeeklyIdleTime().subscribe(data => {
       this.weeklyIdleTime = data;
-      this.createChart('idleTimeChart', this.weeklyIdleTime);
+      this.createChart('idleTimeChart', this.weeklyIdleTime, "Tempo de Inatividade Diária de Vagas no Estacionamento (Segunda a Sexta)");
     });
 
     this.vacancyStatisticsService.getWeeklyTurnoverRate().subscribe(data => {
       this.turnoverRates = data;
-      this.createChart('turnoverRateChart', this.turnoverRates);
+      this.createChart('turnoverRateChart', this.turnoverRates, "Taxa de Rotatividade Diária de Vagas no Estacionamento (Segunda a Sexta)");
     });
 
     this.vacancyStatisticsService.getAverageOccupationDuration().subscribe(data => {
       this.averageDuration = data;
-      this.createChart('averageDurationChart', this.averageDuration);
+      this.createChart('averageDurationChart', this.averageDuration, "Tempo de Inatividade Diária de Vagas no Estacionamento (Segunda a Sexta)");
     });
   }
 
-  createChart(chartId: string, data: number[][]): void {
+  createChart(chartId: string, data: number[][], title: string): void {
     const canvasElement = document.getElementById(chartId) as HTMLCanvasElement | null;
     const ctx = canvasElement?.getContext('2d');
   
@@ -71,7 +71,7 @@ export class VacancyStatisticsChartComponent implements AfterViewInit {
             },
             title: {
               display: true,
-              text: 'Taxa de Ocupação Semanal',
+              text: title,
               font: {
                 size: 30, // Aumenta o tamanho do título
               }
