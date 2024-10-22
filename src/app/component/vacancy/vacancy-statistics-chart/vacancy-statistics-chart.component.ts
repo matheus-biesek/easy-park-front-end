@@ -13,7 +13,7 @@ export class VacancyStatisticsChartComponent implements AfterViewInit {
   turnoverRates: number[][] = [];
   averageDuration: number[][] = [];
 
-  constructor(private vacancyStatisticsService: VacancyStatisticsService) { }
+  constructor(private vacancyStatisticsService: VacancyStatisticsService) {}
 
   ngAfterViewInit(): void {
     this.loadStatistics();
@@ -27,17 +27,12 @@ export class VacancyStatisticsChartComponent implements AfterViewInit {
 
     this.vacancyStatisticsService.getWeeklyIdleTime().subscribe(data => {
       this.weeklyIdleTime = data;
-      this.createChart('idleTimeChart', this.weeklyIdleTime, "Tempo de Inatividade Diária de Vagas no Estacionamento (Segunda a Sexta)");
+      this.createChart('idleTimeChart', this.weeklyIdleTime, "Tempo de Inatividade Diária de Vagas no Estacionamento (Segunda a Domingo)");
     });
 
     this.vacancyStatisticsService.getWeeklyTurnoverRate().subscribe(data => {
       this.turnoverRates = data;
-      this.createChart('turnoverRateChart', this.turnoverRates, "Taxa de Rotatividade Diária de Vagas no Estacionamento (Segunda a Sexta)");
-    });
-
-    this.vacancyStatisticsService.getAverageOccupationDuration().subscribe(data => {
-      this.averageDuration = data;
-      this.createChart('averageDurationChart', this.averageDuration, "Tempo de Inatividade Diária de Vagas no Estacionamento (Segunda a Sexta)");
+      this.createChart('turnoverRateChart', this.turnoverRates, "Taxa de Rotatividade Diária de Vagas no Estacionamento (Segunda a Domingo)");
     });
   }
 
