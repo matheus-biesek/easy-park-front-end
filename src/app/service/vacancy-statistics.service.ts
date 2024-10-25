@@ -14,10 +14,6 @@ export class VacancyStatisticsService {
     return this.http.get<number[][]>(`${this.apiUrl}/weekly-vacancy-occupied`);
   }
 
-  getWeeklyIdleTime(): Observable<number[][]> {
-    return this.http.get<number[][]>(`${this.apiUrl}/weekly-idle-time`);
-  }
-
   getWeeklyTurnoverRate(): Observable<number[][]> {
     return this.http.get<number[][]>(`${this.apiUrl}/weekly-turnover-rate`);
   }

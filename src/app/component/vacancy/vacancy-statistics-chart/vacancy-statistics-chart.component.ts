@@ -9,7 +9,6 @@ import Chart from 'chart.js/auto';
 })
 export class VacancyStatisticsChartComponent implements AfterViewInit {
   weeklyVacancyOccupied: number[][] = [];
-  weeklyIdleTime: number[][] = [];
   turnoverRates: number[][] = [];
   averageDuration: number[][] = [];
 
@@ -25,11 +24,6 @@ export class VacancyStatisticsChartComponent implements AfterViewInit {
       this.createChart('vacancyOccupiedChart', this.weeklyVacancyOccupied, "Taxa de Ocupação Diária de Vagas no Estacionamento - Un");
     });
 
-    this.vacancyStatisticsService.getWeeklyIdleTime().subscribe(data => {
-      this.weeklyIdleTime = data;
-      this.createChart('idleTimeChart', this.weeklyIdleTime, "Tempo de Inatividade Diária de Vagas no Estacionamento - Minutos");
-    });
-
     this.vacancyStatisticsService.getWeeklyTurnoverRate().subscribe(data => {
       this.turnoverRates = data;
       this.createChart('turnoverRateChart', this.turnoverRates, "Taxa de Rotatividade Diária de Vagas no Estacionamento - Un");
@@ -37,7 +31,7 @@ export class VacancyStatisticsChartComponent implements AfterViewInit {
 
     this.vacancyStatisticsService.getAverageOccupationDuration().subscribe(data => {
       this.averageDuration = data;
-      this.createChart('averageDurationChart', this.averageDuration, "Tempo de Inatividade Diária de Vagas no Estacionamento - Minutos");
+      this.createChart('averageDurationChart', this.averageDuration, "Tempo de Ocupação Diária de Vagas no Estacionamento - Minutos");
     });
   }
 
