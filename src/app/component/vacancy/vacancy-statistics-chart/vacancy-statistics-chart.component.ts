@@ -30,21 +30,6 @@ export class VacancyStatisticsChartComponent implements AfterViewInit {
       this.turnoverRates = data;
       this.createChart('turnoverRateChart', this.turnoverRates, "Taxa de Rotatividade Diária de Vagas no Estacionamento - Un");
     });
-
-    this.vacancyStatisticsService.getAverageOccupationDuration().subscribe(data => {
-      this.averageDuration = data;
-      this.createChart('averageDurationChart', this.averageDuration, "Tempo de Ocupação Diária de Vagas no Estacionamento - Minutos");
-    });
-
-    this.vacancyStatisticsService.getWeeklyOccupancyRate().subscribe(data => {
-      this.vacancyOccupiedWeek = data;
-      this.createChart('vacancyOccupiedWeek', this.vacancyOccupiedWeek, "Taxa de Ocupação Semanal de Vagas - Minutos", true);
-    });
-    
-    this.vacancyStatisticsService.getAverageOccupationWeek().subscribe(data => {
-      this.averageDurationWeek = data;
-      this.createChart('averageDurationWeek', this.averageDurationWeek, "Duração Média de Ocupação Semanal - %", true);
-    });
   }
 
   createChart(chartId: string, data: number[][], title: string, isWeekly: boolean = false): void {
