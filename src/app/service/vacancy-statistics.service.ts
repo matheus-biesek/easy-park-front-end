@@ -21,4 +21,13 @@ export class VacancyStatisticsService {
   getAverageOccupationDuration(): Observable<number[][]> {
     return this.http.get<number[][]>(`${this.apiUrl}/weekly-average-occupation-duration`);
   }
+
+
+  getWeeklyOccupancyRate(): Observable<number[][]> {
+    return this.http.get<number[][]>(`${this.apiUrl}/weekly-occupancy-rate`);
+  }
+
+  getAverageOccupationWeek(): Observable<number[][]> {
+    return this.http.get<number[][]>(`${this.apiUrl}/average-occupation-duration`);
+  }
 }

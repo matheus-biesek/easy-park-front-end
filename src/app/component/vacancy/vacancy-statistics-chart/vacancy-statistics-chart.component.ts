@@ -11,6 +11,8 @@ export class VacancyStatisticsChartComponent implements AfterViewInit {
   weeklyVacancyOccupied: number[][] = [];
   turnoverRates: number[][] = [];
   averageDuration: number[][] = [];
+  vacancyOccupiedWeek: number[][] = [];
+  averageDurationWeek: number[][] = [];
 
   constructor(private vacancyStatisticsService: VacancyStatisticsService) {}
 
@@ -33,9 +35,19 @@ export class VacancyStatisticsChartComponent implements AfterViewInit {
       this.averageDuration = data;
       this.createChart('averageDurationChart', this.averageDuration, "Tempo de Ocupação Diária de Vagas no Estacionamento - Minutos");
     });
+
+    this.vacancyStatisticsService.getWeeklyOccupancyRate().subscribe(data => {
+      this.weeklyVacancyOccupied = data;
+      this.createChart('vacancyOccupiedWeek', this.weeklyVacancyOccupied, "Taxa de Ocupação Semanal de Vagas - Minutos", true);
+    });
+    
+    this.vacancyStatisticsService.getAverageOccupationWeek().subscribe(data => {
+      this.averageDurationWeek = data;
+      this.createChart('averageDurationWeek', this.averageDurationWeek, "Duração Média de Ocupação Semanal - %", true);
+    });
   }
 
-  createChart(chartId: string, data: number[][], title: string): void {
+  createChart(chartId: string, data: number[][], title: string, isWeekly: boolean = false): void {
     const canvasElement = document.getElementById(chartId) as HTMLCanvasElement | null;
     const ctx = canvasElement?.getContext('2d');
   
@@ -47,12 +59,14 @@ export class VacancyStatisticsChartComponent implements AfterViewInit {
         borderColor: `rgba(${75 + index * 30}, ${192 - index * 30}, 192, 1)`,
         borderWidth: 1
       }));
+
+      const labels = isWeekly ? ['Semana atual'] : ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
   
       new Chart(ctx, {
         type: 'bar', // ou 'line', 'pie', etc.
         data: {
-          labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
-          datasets: datasets // Use os datasets construídos
+          labels: labels,
+          datasets: datasets
         },
         options: {
           plugins: {
