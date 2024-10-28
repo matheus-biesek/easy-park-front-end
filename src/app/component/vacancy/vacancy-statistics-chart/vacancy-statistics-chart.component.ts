@@ -37,8 +37,8 @@ export class VacancyStatisticsChartComponent implements AfterViewInit {
     });
 
     this.vacancyStatisticsService.getWeeklyOccupancyRate().subscribe(data => {
-      this.weeklyVacancyOccupied = data;
-      this.createChart('vacancyOccupiedWeek', this.weeklyVacancyOccupied, "Taxa de Ocupação Semanal de Vagas - Minutos", true);
+      this.vacancyOccupiedWeek = data;
+      this.createChart('vacancyOccupiedWeek', this.vacancyOccupiedWeek, "Taxa de Ocupação Semanal de Vagas - Minutos", true);
     });
     
     this.vacancyStatisticsService.getAverageOccupationWeek().subscribe(data => {
