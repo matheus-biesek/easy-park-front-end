@@ -23,10 +23,10 @@
 /* Dispositivos maiores que 1024px (desktops) */
 @media (min-width: 1024px) {
   .fixed-right {
-      width: 300px; /* Aumenta ainda mais para telas maiores */
+      width: 200px; /* Aumenta ainda mais para telas maiores */
   }
 
   .main-content {
-      margin-right: 300px;
+      margin-right: 600px;
   }
 }
